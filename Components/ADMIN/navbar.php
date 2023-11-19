@@ -1,5 +1,4 @@
 <?php
-session_start();    
 include_once("../../dao/atualizarSessão.php");
 ?>
 <!DOCTYPE html>

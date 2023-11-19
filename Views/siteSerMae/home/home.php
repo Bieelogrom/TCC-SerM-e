@@ -20,6 +20,7 @@ $imgPublicacao = $publicacao->getImgPublicacao();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../css/siteSerMae/home/inicioSite.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!--link swiper-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
@@ -176,7 +177,7 @@ $imgPublicacao = $publicacao->getImgPublicacao();
 
 
 
-    <script src="../../../js/siteSerMae/home/site.js"></script>
+    
 
     <!--link JS swiper story-->
     <script type="module">
@@ -235,6 +236,8 @@ window.addEventListener("click", function(event) {
     }
 });
 </script>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <!--modal2 denunciar final-->
 </body>
 </html>

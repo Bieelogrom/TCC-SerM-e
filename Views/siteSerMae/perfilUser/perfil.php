@@ -161,6 +161,7 @@ $usuariodao = new usuarioDAO();
                 $publicacao = new Publicacao();
 
                 $publicacoes = $publicacaodao->readPublicacaoByUsuario($id);
+                // var_dump($publicacoes);
                 if (count($publicacoes) > 0) {
                     foreach ($publicacoes as $publicacao) {
                         $legenda = $publicacao->getLegendaPublicacao();
@@ -276,7 +277,7 @@ $usuariodao = new usuarioDAO();
     <script>
 
         function admin() {
-            window.location.href = "../admin/home.php";
+            window.location.href = "../../admin/home.php";
         }
     </script>
 

@@ -1,20 +1,36 @@
 <?php
-session_start();    
+
 include_once("../../../dao/atualizarSessão.php");
-?><!DOCTYPE html>
+include_once "../../../Model/publicacao.php";
+include_once "../../../Dao/publicacaoDAO.php";
+include_once "../../../Dao/salvar.php";
+
+include_once "../../../Model/usuario.php";
+include_once "../../../dao/usuarioDAO.php";
+$id = $_SESSION['ID_conta'];
+date_default_timezone_set('America/Sao_Paulo');
+
+$usuario = new Usuario();
+$usuariodao = new usuarioDAO();
+?>
+<!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../css/siteSerMae/perfilUser/perfil.css">
     <link rel="stylesheet" href="../../../css/siteSerMae/home/boasVindas.css">
     <link rel="stylesheet" href="../../../css/siteSerMae/home/inicioSite.css">
+    <script src="../../../js/atualizarSessão.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Seu perfil - Favoritos</title>
+    <title>Seu perfil</title>
 </head>
+
 <body>
-   <!--navBar-->
-   <?php
+    <!--navBar-->
+    <?php
     include('../../../components/siteSerMae/navBar.php');
     ?>
     <!--navBar-->
@@ -69,7 +85,7 @@ include_once("../../../dao/atualizarSessão.php");
                                                 <h1><?= $_SESSION['nomeUsuario']; ?></h1>
                                             </div>
                                             <div class="perfil-mulher">
-                                                <h1><?= $_SESSION['tipoPerfil']; ?></h1>
+                                                <h1><?= $_SESSION['tipoConta']; ?></h1>
                                             </div>
                                         </div>
                                         <div class="bio">
@@ -84,52 +100,13 @@ include_once("../../../dao/atualizarSessão.php");
                                         <?php }
                                         ?>
                                         <div id="fade" class="hide"></div>
+
                                         <div id="modal" class="hide">
-
-                                            <div class="modal-header">
-                                                <h2>Editar o seu Perfil</h2>
-                                                <button id="close-modal">Voltar</button>
-                                            </div>
-                                            <div class="modal-body">
-
-                                                <!--dados inicio-->
-                                                <div class="input-group">
-                                                    <h3>E-mail:</h3>
-                                                    <input type="text">
-                                                </div>
-
-                                                <div class="input-group">
-                                                    <h3>Nome Usuária:</h3>
-                                                    <input type="text" name="username" id="username">
-                                                </div>
-
-                                                <div class="input-group">
-                                                    <h3>Nome Completo:</h3>
-                                                    <input type="text" name="position" id="position">
-                                                </div>
-
-                                                <div class="input-group">
-                                                    <h3>Telefone:</h3>
-                                                    <input type="text" name="phone" id="phone">
-                                                </div>
-
-
-                                                <!--dropDown-->
-                                                <div class="dropdown">
-                                                    <div class="select">
-                                                        <span class="selected">Escolha seu perfil</span>
-                                                        <div class="caret"></div>
-                                                    </div>
-                                                    <ul class="menu">
-                                                        <li class="active">Mãe</li>
-                                                        <li>Mãe solo</li>
-                                                        <li>Tentante</li>
-                                                        <li>Gestante</li>
-                                                    </ul>
-                                                </div>
-                                                <!--dados final-->
-                                                <input type="submit" class="btn btn-primary btn-lg" value="Salvar Alterações">
-                                            </div>
+                                            <!--dados inicio-->
+                                            <?php
+                                            include('../../../components/siteSerMae/attPerfilPopup.php')
+                                            ?>
+                                            <!--dados final-->
                                         </div>
 
 
@@ -168,31 +145,94 @@ include_once("../../../dao/atualizarSessão.php");
                             </div>
                             <!--informações do perfil final-->
 
+                        </div>
                     </div>
                 </div>
+                <!-- Seção de Publicações -->
+                <div class="publicacoes">
+
+                    <?php
+
+                    include_once "../../../dao/publicacaoDAO.php";
+                    $publicacaodao = new PublicacaoDAO();
+                    $publicacao = new Publicacao();
+
+                    $publicacoes = $publicacaodao->readPublicacaoByUsuarioSalva($id);
+
+                    if (count($publicacoes) > 0) {
+                        foreach ($publicacoes as $publicacao) {
+                            $legenda = $publicacao->getLegendaPublicacao();
+                            $imgPublicacao = $publicacao->getImgPublicacao();
+                            $numCurtidas = $publicacao->getNumCurtidasPublicacao();
+                            $dataPublicacao = $publicacao->getDataPublicacao();
+                            $publicacaoId = $publicacao->getIdPublicacao();
+
+                            // Exibe a publicação
+                    ?>
+
+                            <div class="publicacao-container">
+                                <div class="publicacao-item borda-arredondada">
+                                    <img src="../../../img/siteSerMae/publicacao/<?= $imgPublicacao; ?>" alt="Imagem da Publicação" class="publicacao-card" style="width: 400px; height: 400px;">
+                                </div>
+                                <div class="card-2">
+                                    <div class="icons">
+
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-heart">
+
+                                    <?php
+                                    if ($numCurtidas == 0) {
+                                        echo '0';
+                                    } else {
+                                        echo $numCurtidas;
+                                    }
+                                    ?>
+                                </i>
+
+                                <br><b><?php echo $legenda; ?></b>
+
+                                <p>Publicado <?php echo $tempoFormatado; ?></p>
+                            </div>
+
+                    <?php
+                        }
+                    } else {
+                        echo '<p>Este perfil ainda não possui nenhuma publicação salva.</p>';
+                    }
+
+                    ?>
+
+
+
+
+                </div>
             </div>
-    </div>
-    <!--começo do perfil final-->
-
-
-    <!--publicações, favoritos e dicas - inicio-->
-    <div class="options-perfil">
-        <ul class="nav-list-option">
-            <li><a href="perfil.php">Publicações</a></li>
-            <li><a href="perfilFavoritos.php">Favoritos</a></li>
-            <li><a href="perfilDicas.php">Dicas</a></li>
-        </ul>
-    </div>
-    <!--publicações, favoritos e dicas - final-->
+            <!--começo do perfil final-->
 
 
 
+            <!--publicações, favoritos e dicas - inicio-->
+            <div class="options-perfil">
+                <ul class="nav-list-option">
+                    <li><a href="perfil.php">Publicações</a></li>
+                    <li><a href="perfilFavoritos.php">Favoritos</a></li>
+                    <li><a href="perfilDicas.php">Dicas</a></li>
+                </ul>
+            </div>
 
-</div>
-</main>
 
 
-  <!--Inicio popup aria-->
+            <!--publicações, favoritos e dicas - final-->
+
+
+
+
+        </div>
+    </main>
+
+
+    <!--Inicio popup aria-->
     <!--final perfil-popUp-->
     <?php
     include('../../../components/siteSerMae/perfilPopup.php')
@@ -211,5 +251,32 @@ include_once("../../../dao/atualizarSessão.php");
     <script src="../../../js/siteSerMae/perfilUser/perfil.js"></script>
     <script src="../../../js/siteSerMae/home/bemVinda.js"></script>
 
+    <script>
+        function admin() {
+            window.location.href = "../../admin/home.php";
+        }
+    </script>
+
+    <script>
+        // Função para fechar o modal
+        function closeModal() {
+            var modal = document.getElementById("modal");
+            modal.classList.add("hide");
+            var fade = document.getElementById("fade");
+            fade.classList.add("hide");
+        }
+
+        // Adicione um ouvinte de evento ao botão "Salvar Alterações"
+        var btnSave = document.getElementById("btn-salvar");
+        btnSave.addEventListener("click", function(event) {
+            // Lógica para processar o salvamento das alterações aqui
+
+            // Feche o modal
+            closeModal();
+        });
+    </script>
+
+
 </body>
+
 </html>

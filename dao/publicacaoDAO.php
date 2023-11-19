@@ -58,6 +58,7 @@ class publicacaoDAO
     
 
 
+
     public function readPublicacaoByUsuario($idUsuario) {
         $publicacoes = array(); 
     
@@ -78,24 +79,54 @@ class publicacaoDAO
         return $publicacoes;
     }
     
+    public function readPublicacaoByUsuarioSalva($idUsuario){
+        $publicacoes = array(); 
+    
+        $sql = "SELECT * FROM tbsalvos 
+        INNER JOIN tbpublicacao ON tbsalvos.idSalvos = tbpublicacao.idPublicacao
+        WHERE tbsalvos.idUsuario = :idUsuario 
+        ";
+        try {
+            $query = conexao::getConexao()->prepare($sql);
+            $query->bindParam(':idUsuario', $idUsuario);
+            $query->execute();
+            
+            while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+                $publicacao = $this->listaPublicacaoSalva($row);
+                $publicacoes[] = $publicacao;
+            }
+        } catch (PDOException $e) {
+            echo "Erro na busca: " . $e->getMessage();
+        }
+        
+        return $publicacoes;
+    }
 
+    public function listaPublicacaoSalva($row)
+    {
+        $publicacao = new Publicacao();
+        $publicacao->setLegendaPublicacao($row['legendaPublicacao']);
+        $publicacao->setImgPublicacao($row['imgPublicacao']); 
+        $publicacao->setDataPublicacao($row['dataPublicacao']);
+        return $publicacao;
+    }
 
-    public function listaPublicacao($row)
-{
-    $publicacao = new Publicacao();
-    $publicacao->setIdPublicacao($row['idPublicacao']);
-    $publicacao->setLegendaPublicacao($row['legendaPublicacao']);
-    $publicacao->setImgPublicacao($row['imgPublicacao']); 
-    $publicacao->setDataPublicacao($row['dataPublicacao']);
-    $publicacao->setIdUser($row['idUsuario']);
-    return $publicacao;
-}
+        public function listaPublicacao($row)
+    {
+        $publicacao = new Publicacao();
+        $publicacao->setIdPublicacao($row['idPublicacao']);
+        $publicacao->setLegendaPublicacao($row['legendaPublicacao']);
+        $publicacao->setImgPublicacao($row['imgPublicacao']); 
+        $publicacao->setDataPublicacao($row['dataPublicacao']);
+        $publicacao->setIdUser($row['idUsuario']);
+        return $publicacao;
+    }
 
 public function readTodasPublicacoes()
 {
     $publicacoes = array();
 
-    $sql = "SELECT p.legendaPublicacao, p.imgPublicacao, p.dataPublicacao, u.nomeUsuario AS nomeUsuario, u.fotoUsuario AS fotoPerfil, u.idUsuario AS idUsuario
+    $sql = "SELECT p.idPublicacao, p.legendaPublicacao, p.imgPublicacao, p.dataPublicacao, u.nomeUsuario AS nomeUsuario, u.fotoUsuario AS fotoPerfil, u.idUsuario AS idUsuario
         FROM tbpublicacao AS p
         INNER JOIN tbusuario AS u ON p.idUsuario = u.idUsuario";
 
@@ -105,6 +136,7 @@ public function readTodasPublicacoes()
 
         while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
             $publicacao = new Publicacao();
+            $publicacao->setIdPublicacao($row['idPublicacao']);
             $publicacao->setLegendaPublicacao($row['legendaPublicacao']);
             $publicacao->setImgPublicacao($row['imgPublicacao']);
             $publicacao->setDataPublicacao($row['dataPublicacao']);
