@@ -167,6 +167,18 @@ $usuariodao = new usuarioDAO();
                             $dataPublicacao = $publicacao->getDataPublicacao();
                             $publicacaoId = $publicacao->getIdPublicacao();
 
+                            $timestampPublicacao = strtotime($dataPublicacao);
+                            $tempoDecorrido = time() - $timestampPublicacao;
+                            if ($tempoDecorrido < 60) {
+                                $tempoFormatado = $tempoDecorrido . " segundo(s) atrás";
+                            } elseif ($tempoDecorrido < 3600) {
+                                $tempoFormatado = round($tempoDecorrido / 60) . " minuto(s) atrás";
+                            } elseif ($tempoDecorrido < 86400) {
+                                $tempoFormatado = round($tempoDecorrido / 3600) . " hora(s) atrás";
+                            } else {
+                                $tempoFormatado = round($tempoDecorrido / 86400) . " dia(s) atrás";
+                            }
+
                             // Exibe a publicação
                     ?>
 

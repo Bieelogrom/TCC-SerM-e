@@ -155,5 +155,16 @@ public function readTodasPublicacoes()
 }
 
 
+public function contarCurtidas($idPub) {
+    $sql = "SELECT COUNT(*) AS total_curtidas FROM tbcurtidas WHERE idpublicacao = :idpublicacao;";
+    $conexao = conexao::getConexao();
+    $resultado = $conexao->prepare($sql);
+    $resultado->bindParam(':idpublicacao', $idPub, PDO::PARAM_INT); // Vincular o parâmetro com o valor de $idPub
+    $resultado->execute();
+
+    return $resultado->fetch(PDO::FETCH_ASSOC); // Retornar o resultado da consulta
+}
+
+
 
 }

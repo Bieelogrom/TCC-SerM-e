@@ -164,11 +164,13 @@ $usuariodao = new usuarioDAO();
                 // var_dump($publicacoes);
                 if (count($publicacoes) > 0) {
                     foreach ($publicacoes as $publicacao) {
+                        $publicacaoId = $publicacao->getIdPublicacao();
                         $legenda = $publicacao->getLegendaPublicacao();
                         $imgPublicacao = $publicacao->getImgPublicacao();
+                        $quantidadeCurtidas = $publicacaodao->contarCurtidas($publicacaoId)['total_curtidas'];
                         $numCurtidas = $publicacao->getNumCurtidasPublicacao();
                         $dataPublicacao = $publicacao->getDataPublicacao();
-                        $publicacaoId = $publicacao->getIdPublicacao();
+                      
                 
                         // Converte a data da publicação em um timestamp
                         $timestampPublicacao = strtotime($dataPublicacao);
@@ -200,10 +202,10 @@ $usuariodao = new usuarioDAO();
                             <i class="fa-solid fa-heart">
                             
                                         <?php
-                                        if ($numCurtidas == 0) {
+                                        if ($quantidadeCurtidas == 0) {
                                             echo '0';
                                         } else {
-                                            echo $numCurtidas;
+                                            echo $quantidadeCurtidas;
                                         }
                                         ?>
                                     </i>

@@ -35,5 +35,23 @@ if(isset($_POST["idPublicacao"], $_POST['idUsuario'], $_POST['acao'])){
         // Ação inválida
 
     }
+}else if(isset($_POST["idPublicacao"], $_POST['idUsuario'], $_POST['curtida'])){
+    include_once('../../../dao/conexãoDAO.php');
+
+    $curtida = $_POST['curtida'];
+    $idUsuario = $_POST['idUsuario'];
+    $idPublicacao = $_POST['idPublicacao'];
+
+    try{
+        $curtimento = "INSERT INTO tbcurtidas (idUsuario, idPublicacao) VALUES (?, ?)";
+        $resultado = conexao::getConexao()->prepare($curtimento);
+        $resultado->execute([$idUsuario, $idPublicacao]);
+
+    }catch(PDOException $e){
+        echo $e->getMessage();
+    }
+
+
+
 }
 ?>

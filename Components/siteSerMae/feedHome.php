@@ -2,6 +2,8 @@
 include_once("../../../dao/atualizarSessão.php");
 
 
+
+
 ?>
 <div class="feed">
 
@@ -22,6 +24,7 @@ include_once("../../../dao/atualizarSessão.php");
     if (count($publicacoes) > 0) {
         foreach ($publicacoes as $publicacao) {
             $id = $publicacao->getIdPublicacao();
+            $quantidadeCurtidas = $publicacaodao->contarCurtidas($id)['total_curtidas'];
             $legenda = $publicacao->getLegendaPublicacao();
             $imgPublicacao = $publicacao->getImgPublicacao();
             $dataPublicacao = $publicacao->getDataPublicacao();
@@ -122,7 +125,9 @@ include_once("../../../dao/atualizarSessão.php");
             <!--Feed ação aria-->
             <div class="action-button">
                 <div class="interaction-button">
-                    <span><i class="fa fa-heart"></i></span>
+                    <span><i class="fa fa-heart" id="<?= $id ?>"></i></span>
+                    <!-- <span><?= "<i style='font-size: 12px' class='fa'>" . $quantidadeCurtidas . "</i>"; ?></span> -->
+                    <span><i id="contagem"></i></span>
                     <span><i class="fa fa-comment-dots"></i></span>
                 </div>
                 <div class="bookmark">
@@ -166,7 +171,6 @@ include_once("../../../dao/atualizarSessão.php");
         $(document).on('click', '.fa-bookmark', function() {
             var idPublicacao = $(this).attr("id");
             var idUsuario = $('#id_do_usuario').val();
-
             var itemSalvo = $(this).hasClass('salvo');
             // console.log("ID do usuario = "+ idUsuario)
             // console.log("ID da publicação = "+ idPublicacao)
@@ -178,15 +182,40 @@ include_once("../../../dao/atualizarSessão.php");
                 };
             };
             $.post("./SALVAR.php", dados, function(retorna) {
-                if(itemSalvo){
+                if (itemSalvo) {
                     $('.fa-bookmark').removeClass('salvo');
-                }else{
-                    $('.fa-bookmark').addClass('salvo'); 
+                } else {
+                    $('.fa-bookmark').addClass('salvo');
                 }
                 $('.fa-bookmark').html(retorna)
-                $('.fa-bookmark').css('')
+                $('.fa-bookmark').css({
+                    "background-color": "salmon",
+                    "color": "salmon"
+                })
             }).fail(function(xhr, status, error) {
                 console.log("Ocorreu um erro na requisição: " + error);
+            })
+        })
+
+        $(document).on('click', '.fa-heart', function() {
+            var idPublicacao = $(this).attr("id");
+            var curtida = 0;
+            var idUsuario = $('#id_do_usuario').val();
+
+            // alert(curtida + idPublicacao + idUsuario)
+            if (curtida !== '' && idPublicacao !== '' && idUsuario !== '') {
+                var infos = {
+                    idPublicacao: idPublicacao,
+                    idUsuario: idUsuario,
+                    curtida: curtida
+                }
+            };
+            $.post("./SALVAR.php", infos, function(retorno) {
+                $('.fa-heart').html(retorno)
+                $('.fa-heart').css({
+                    "background-color": "salmon",
+                    "color": "salmon"
+                })
             })
         })
     });
