@@ -33,6 +33,12 @@ if (isset($_POST['admin_ação'])) {
             $publicacaodao->createPublicacao($publicacao);
         }
     }
+    header("Location: ../Views/siteSerMae/home/home.php");
+}else if(isset($_GET["idPublicacao"], $_GET['idUsuario'])){
+    $id = $_GET['idPublicacao'];
+
+
+
 }
-header("Location: ../Views/siteSerMae/home/home.php");
+
 ?>

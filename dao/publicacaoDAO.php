@@ -78,6 +78,26 @@ class publicacaoDAO
         
         return $publicacoes;
     }
+
+    public function readPublicacaoByID($idPublicacao) {
+        $publicacoes = array(); 
+    
+        $sql = "SELECT * FROM tbpublicacao WHERE idPublicacao = :idPublicacao";
+        try {
+            $query = conexao::getConexao()->prepare($sql);
+            $query->bindParam(':idPublicacao', $idPublicacao, PDO::PARAM_INT);
+            $query->execute();
+            
+            while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+                $publicacao = $this->listaPublicacaoSalva($row);
+                $publicacoes[] = $publicacao;
+            }
+        } catch (PDOException $e) {
+            echo "Erro na busca: " . $e->getMessage();
+        }
+        
+        return $publicacoes;
+    }
     
     public function readPublicacaoByUsuarioSalva($idUsuario){
         $publicacoes = array(); 

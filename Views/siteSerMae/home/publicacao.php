@@ -73,7 +73,7 @@ $imgPublicacao = $publicacao->getImgPublicacao();
 
                <!--Feed-->
                <?php
-                    include('../../../Components/siteSerMae/feedHome.php');   
+                    include('../../../Components/siteSerMae/publicacoesPorId.php');   
                 ?>
             <!--Feed-->
                 

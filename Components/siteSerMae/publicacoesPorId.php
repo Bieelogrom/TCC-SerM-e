@@ -12,7 +12,7 @@ include_once("../../../dao/atualizarSessão.php");
 
     <!--Feed Top-->
     <?php
-    $publicacoes = $publicacaodao->readTodasPublicacoes();
+    $publicacoes = $publicacaodao->readPublicacaoByID($_GET['idPub']);
 
     // Organiza as publicações com base na data (a mais recente primeiro)
     usort($publicacoes, function ($a, $b) {
@@ -26,11 +26,11 @@ include_once("../../../dao/atualizarSessão.php");
     if (count($publicacoes) > 0) {
         foreach ($publicacoes as $publicacao) {
             $id = $publicacao->getIdPublicacao();
-            $quantidadeCurtidas = $publicacaodao->contarCurtidas($id)['total_curtidas'];
+            $quantidadeCurtidas = $publicacaodao->contarCurtidas($_GET['idPub'])['total_curtidas'];
             $legenda = $publicacao->getLegendaPublicacao();
             $imgPublicacao = $publicacao->getImgPublicacao();
             $dataPublicacao = $publicacao->getDataPublicacao();
-            $usuario = $publicacao->getUsuario();
+            // $usuario = $publicacao->getUsuario();
             $fotoPerfil = $usuario->getFotoDePerfil();
             $nomeUsuario = $usuario->getNomeUsuario();
 
@@ -128,10 +128,8 @@ include_once("../../../dao/atualizarSessão.php");
                     <span><i class="fa fa-heart" id="<?= $id ?>"></i></span>
                     <span><?= "<i style='font-size: 12px' class='fa'>" . $quantidadeCurtidas . "</i>"; ?></span>
                     <span><i id="contagem"></i></span>
-                    <span><i class="fa fa-comment-dots"  id="<?= $id ?>"></i></span>
                 </div>
                 <div class="bookmark">
-
                     <i class="fa fa-bookmark" id="<?= $id ?>"></i>
                 </div>
             </div>
