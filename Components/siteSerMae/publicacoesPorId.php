@@ -30,7 +30,7 @@ include_once("../../../dao/atualizarSessão.php");
             $legenda = $publicacao->getLegendaPublicacao();
             $imgPublicacao = $publicacao->getImgPublicacao();
             $dataPublicacao = $publicacao->getDataPublicacao();
-            // $usuario = $publicacao->getUsuario();
+            $usuario = $publicacao->getUsuario();
             $fotoPerfil = $usuario->getFotoDePerfil();
             $nomeUsuario = $usuario->getNomeUsuario();
 
@@ -54,7 +54,7 @@ include_once("../../../dao/atualizarSessão.php");
             <div class="feed-top">
                 <div class="user">
                     <div class="profile-picture">
-                        <a href="../perfilUser/perfil.php?id=<?= $usuario->getIdUsuario() ?>"><img src="../../../img/siteSerMae/Perfis/<?= $fotoPerfil ?>" alt=""></a>
+                        <a href="../perfilUser/perfil.php?id=<?= $usuario->getIdUsuario() ?>"><img src="../../../img/siteSerMae/Perfis/<?= $fotoPerfil ?>" alt="PErfil"></a>
                     </div>
 
                     <div class="info">
@@ -134,6 +134,8 @@ include_once("../../../dao/atualizarSessão.php");
                 </div>
             </div>
 
+        
+
 
             <!--liked by-->
             <div class="liked-by">
@@ -144,6 +146,8 @@ include_once("../../../dao/atualizarSessão.php");
             </div>
 
             <!--caption-->
+
+          
 
 
     <?php
@@ -161,9 +165,10 @@ include_once("../../../dao/atualizarSessão.php");
     ?>
 
     <!--Comentários-->
-    <div class="comments text-coment">
-        Ver mais comentários
-    </div>
+    <form class="add-post input-post">
+                <input type="text" placeholder="No que você está pensando?" id="add-post">
+                <input type="button" value="Comentar" class="btn btn-primary btn-submitar" id="<?= $id ?>">
+    </form>
 </div>
 </div>
 

@@ -39,6 +39,20 @@ if (isset($_POST['admin_ação'])) {
 
 
 
+}else if(isset($_POST['idPublicacao'], $_POST['comentario'], $_POST['idUsuario'])){
+    $idpub = $_POST['idPublicacao'];
+    $comentario = $_POST['comentario'];
+    $usuario = $_POST['idUsuario'];
+
+   try{ $sql = "INSERT INTO tbcomentarios (comentario, idUsuario, idPublicacao) VALUES (:comentario, :idUsuario, :idPublicacao)";
+    $query = Conexao::getConexao()->prepare($sql);
+    $query->bindValue(':comentario', $comentario);
+    $query->bindValue(':idUsuario', $usuario);
+    $query->bindValue(':idPublicacao', $idpub);
+    $query->execute();}catch(PDOException $e){
+        echo $e->getMessage();
+    }
+
 }
 
 ?>

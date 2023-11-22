@@ -45,6 +45,7 @@ $(document).ready(function() {
         };
         $.post("./SALVAR.php", infos, function(retorno) {
             $('.fa-heart').html(retorno)
+            location.reload();
         })
     })
 
@@ -72,5 +73,29 @@ $(document).ready(function() {
         $.get("../../../Controller/publicacaoController.php", comment, function(exibe){
             window.location.href = "../../../Views/siteSerMae/home/publicacao.php?idPub=" + idPublicacao;
         })
+    })
+
+
+    $('.btn-submitar').on('click', function (){
+        let idPublicacao = $(this).attr('id');
+        let comentario = $('#add-post').val();
+        var idUsuario = $('#id_do_usuario').val();
+
+        // alert(idPublicacao + idUsuario + comentario)
+
+        if(idPublicacao !== '' && idUsuario !== '' && comentario !== ''){
+            var criarComentario = {
+                idPublicacao: idPublicacao,
+                comentario: comentario,
+                idUsuario: idUsuario
+            }
+        };
+
+        $.post("../../../Controller/publicacaoController.php", criarComentario, function(pora){
+            location.reload();
+            // $('.btn-submitar').html(pora)
+        })
+
+
     })
 });

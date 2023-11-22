@@ -80,23 +80,35 @@ class publicacaoDAO
     }
 
     public function readPublicacaoByID($idPublicacao) {
-        $publicacoes = array(); 
-    
-        $sql = "SELECT * FROM tbpublicacao WHERE idPublicacao = :idPublicacao";
-        try {
-            $query = conexao::getConexao()->prepare($sql);
-            $query->bindParam(':idPublicacao', $idPublicacao, PDO::PARAM_INT);
-            $query->execute();
-            
-            while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-                $publicacao = $this->listaPublicacaoSalva($row);
-                $publicacoes[] = $publicacao;
-            }
-        } catch (PDOException $e) {
-            echo "Erro na busca: " . $e->getMessage();
+        $publicacoes = array();
+
+    $sql = "SELECT * FROM tbpublicacao
+    INNER JOIN tbusuario ON tbpublicacao.idusuario = tbusuario.idusuario
+    WHERE tbpublicacao.idpublicacao = $idPublicacao
+    ";
+
+    try {
+        $query = conexao::getConexao()->prepare($sql);
+        $query->execute();
+
+        while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+            $publicacao = new Publicacao();
+            $publicacao->setIdPublicacao($row['idPublicacao']);
+            $publicacao->setLegendaPublicacao($row['legendaPublicacao']);
+            $publicacao->setImgPublicacao($row['imgPublicacao']);
+            $publicacao->setDataPublicacao($row['dataPublicacao']);
+            $usuario = new Usuario();
+            $usuario->setIdUsuario(isset($row['idUsuario']) ? $row['idUsuario'] : null);
+            $usuario->setNomeUsuario(isset($row['nomeUsuario']) ? $row['nomeUsuario'] : null);
+            $usuario->setFotoDePerfil(isset($row['fotoUsuario']) ? $row['fotoUsuario'] : null); // Defina a foto de perfil aqui
+            $publicacao->setUsuario($usuario);
+            $publicacoes[] = $publicacao;
         }
-        
-        return $publicacoes;
+    } catch (PDOException $e) {
+        echo "Erro na busca: " . $e->getMessage();
+    }
+
+    return $publicacoes;
     }
     
     public function readPublicacaoByUsuarioSalva($idUsuario){
@@ -122,12 +134,22 @@ class publicacaoDAO
         return $publicacoes;
     }
 
+    public function listaPublicacoesporId($row){
+        $publicacao = new Publicacao();
+        $publicacao->setIdPublicacao($row['idPublicacao']);
+        $publicacao->setLegendaPublicacao($row['legendaPublicacao']);
+        $publicacao->setImgPublicacao($row['imgPublicacao']); 
+        $publicacao->setDataPublicacao($row['dataPublicacao']);
+        $publicacao->setIdUser($row['idUsuario']);
+        return $publicacao;
+    }
     public function listaPublicacaoSalva($row)
     {
         $publicacao = new Publicacao();
         $publicacao->setLegendaPublicacao($row['legendaPublicacao']);
         $publicacao->setImgPublicacao($row['imgPublicacao']); 
         $publicacao->setDataPublicacao($row['dataPublicacao']);
+        $publicacao->setIdUser($row['idUsuario']);
         return $publicacao;
     }
 
@@ -163,7 +185,7 @@ public function readTodasPublicacoes()
             $usuario = new Usuario();
             $usuario->setIdUsuario(isset($row['idUsuario']) ? $row['idUsuario'] : null);
             $usuario->setNomeUsuario(isset($row['nomeUsuario']) ? $row['nomeUsuario'] : null);
-            $usuario->setFotoDePerfil(isset($row['fotoPerfil']) ? $row['fotoPerfil'] : null); // Defina a foto de perfil aqui
+            $usuario->setFotoDePerfil(isset($row['fotoUsuario']) ? $row['fotoUsuario'] : null); // Defina a foto de perfil aqui
             $publicacao->setUsuario($usuario);
             $publicacoes[] = $publicacao;
         }

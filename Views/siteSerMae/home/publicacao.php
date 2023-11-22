@@ -61,10 +61,6 @@ $imgPublicacao = $publicacao->getImgPublicacao();
     <div class="main-middle">
         <div class="middle-container">
                <!--post input-->
-               <form class="add-post input-post">
-                <input type="text" placeholder="No que você está pensando?" id="add-post">
-                <input type="submit" value="Postar" class="btn btn-primary">
-               </form>
 
                <!--Inicio do Feed-->
                <div class="feeds">
