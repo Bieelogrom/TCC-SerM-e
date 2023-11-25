@@ -5,6 +5,10 @@ include_once "../../../Model/publicacao.php";
 include_once "../../../Dao/publicacaoDAO.php";
 include_once "../../../Dao/salvar.php";
 
+$id = $_SESSION['ID_conta'];
+date_default_timezone_set('America/Sao_Paulo');
+
+
 include_once "../../../Model/usuario.php";
 include_once "../../../dao/usuarioDAO.php";
 $id = $_SESSION['ID_conta'];
@@ -22,13 +26,12 @@ $usuariodao = new usuarioDAO();
     <link rel="stylesheet" href="../../../css/siteSerMae/perfilUser/perfil.css">
     <link rel="stylesheet" href="../../../css/siteSerMae/home/boasVindas.css">
     <link rel="stylesheet" href="../../../css/siteSerMae/home/inicioSite.css">
+    <link class="img-head" rel="icon" href="../../../img/siteSerMae/bemvinda/serMãe.png">
     <script src="../../../js/atualizarSessão.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Seu perfil</title>
 </head>
-
-<body>
     <!--navBar-->
     <?php
     include('../../../components/siteSerMae/navBar.php');
@@ -92,26 +95,18 @@ $usuariodao = new usuarioDAO();
                                             <p><?= $_SESSION['biografiaUsuario'] ?></p>
                                         </div>
 
-                                        <!--Botão editar perfil inicio-->
-                                        <button class="btn-editar-perfil" id="open-modal">Editar</button>
-                                        <?php
-                                        if ($_SESSION['nivelConta'] == 3) { ?>
-                                            <button onclick="admin()" class="btn-editar-perfil">Tela ADMIN</button>
-                                        <?php }
-                                        ?>
-                                        <div id="fade" class="hide"></div>
+                                         <!--Botão editar perfil inicio-->
+                                      <button class="btn-editar-perfil" id="open-modal">Editar</button>
 
                                         <div id="modal" class="hide">
-                                            <!--dados inicio-->
-                                            <?php
-                                            include('../../../components/siteSerMae/attPerfilPopup.php')
-                                            ?>
-                                            <!--dados final-->
+                                                <!--dados inicio-->
+                                                <?php
+                                                include('../../../components/siteSerMae/attPerfilPopup.php')
+                                                ?>
+                                                <!--dados final-->
                                         </div>
-
-
-                                    </div>
-                                    <!--Botão editar perfil final-->
+                                        </div>
+                                        <!--Botão editar perfil final-->
 
                                     <!--nomes usuária-->
 
@@ -161,11 +156,11 @@ $usuariodao = new usuarioDAO();
 
                     if (count($publicacoes) > 0) {
                         foreach ($publicacoes as $publicacao) {
+                            $publicacaoId = $publicacao->getIdPublicacao();
                             $legenda = $publicacao->getLegendaPublicacao();
                             $imgPublicacao = $publicacao->getImgPublicacao();
-                            $numCurtidas = $publicacao->getNumCurtidasPublicacao();
+                            $quantidadeCurtidas = $publicacaodao->contarCurtidas($publicacaoId)['total_curtidas'];
                             $dataPublicacao = $publicacao->getDataPublicacao();
-                            $publicacaoId = $publicacao->getIdPublicacao();
 
                             $timestampPublicacao = strtotime($dataPublicacao);
                             $tempoDecorrido = time() - $timestampPublicacao;
@@ -184,56 +179,58 @@ $usuariodao = new usuarioDAO();
 
                             <div class="publicacao-container">
                                 <div class="publicacao-item borda-arredondada">
-                                    <img src="../../../img/siteSerMae/publicacao/<?= $imgPublicacao; ?>" alt="Imagem da Publicação" class="publicacao-card" style="width: 400px; height: 400px;">
+                                    <img src="../../../img/siteSerMae/publicacao/<?= $imgPublicacao; ?>" alt="Imagem da Publicação" class="publicacao-card">
                                 </div>
                                 <div class="card-2">
                                     <div class="icons">
 
                                     </div>
                                 </div>
+                                
                                 <i class="fa-solid fa-heart">
-
-                                    <?php
-                                    if ($numCurtidas == 0) {
-                                        echo '0';
-                                    } else {
-                                        echo $numCurtidas;
-                                    }
-                                    ?>
+                            
+                                        <?php
+                                        if ($quantidadeCurtidas == 0) {
+                                            echo '0';
+                                        } else {
+                                            echo $quantidadeCurtidas;
+                                        }
+                                        ?>
                                 </i>
 
-                                <br><b><?php echo $legenda; ?></b>
-
-                                <p>Publicado <?php echo $tempoFormatado; ?></p>
-                            </div>
-
-                    <?php
-                        }
-                    } else {
-                        echo '<p>Este perfil ainda não possui nenhuma publicação salva.</p>';
-                    }
-
-                    ?>
-
-
-
-
-                </div>
+                          
+                                <br><b class="legenda"><?php echo $legenda; ?></b>
+                    
+                    <!-- Exibe o tempo decorrido formatado -->
+                    <p class="tempo">Publicado <?php echo $tempoFormatado; ?></p>
             </div>
+        <?php
+        }
+    }
+    else {
+        echo '<p>Este perfil ainda não possui nenhuma publicação.</p>';
+    }
+    
+    ?>
+
+   
+</div>
+</div>
             <!--começo do perfil final-->
 
 
 
+           
             <!--publicações, favoritos e dicas - inicio-->
             <div class="options-perfil">
                 <ul class="nav-list-option">
-                    <li><a href="perfil.php">Publicações</a></li>
+                <li><a href="perfil.php">Publicações</a></li>
                     <li><a href="perfilFavoritos.php">Favoritos</a></li>
                     <li><a href="perfilDicas.php">Dicas</a></li>
                 </ul>
             </div>
 
-
+            
 
             <!--publicações, favoritos e dicas - final-->
 
@@ -264,29 +261,30 @@ $usuariodao = new usuarioDAO();
     <script src="../../../js/siteSerMae/home/bemVinda.js"></script>
 
     <script>
+
         function admin() {
             window.location.href = "../../admin/home.php";
         }
     </script>
 
-    <script>
+        <script>
         // Função para fechar o modal
         function closeModal() {
-            var modal = document.getElementById("modal");
-            modal.classList.add("hide");
-            var fade = document.getElementById("fade");
-            fade.classList.add("hide");
+        var modal = document.getElementById("modal");
+        modal.classList.add("hide");
+        var fade = document.getElementById("fade");
+        fade.classList.add("hide");
         }
 
         // Adicione um ouvinte de evento ao botão "Salvar Alterações"
         var btnSave = document.getElementById("btn-salvar");
-        btnSave.addEventListener("click", function(event) {
-            // Lógica para processar o salvamento das alterações aqui
+        btnSave.addEventListener("click", function (event) {
+        // Lógica para processar o salvamento das alterações aqui
 
-            // Feche o modal
-            closeModal();
+        // Feche o modal
+        closeModal();
         });
-    </script>
+        </script>
 
 
 </body>

@@ -58,7 +58,6 @@ class publicacaoDAO
     
 
 
-
     public function readPublicacaoByUsuario($idUsuario) {
         $publicacoes = array(); 
     
@@ -164,6 +163,7 @@ class publicacaoDAO
         return $publicacao;
     }
 
+
 public function readTodasPublicacoes()
 {
     $publicacoes = array();
@@ -185,7 +185,7 @@ public function readTodasPublicacoes()
             $usuario = new Usuario();
             $usuario->setIdUsuario(isset($row['idUsuario']) ? $row['idUsuario'] : null);
             $usuario->setNomeUsuario(isset($row['nomeUsuario']) ? $row['nomeUsuario'] : null);
-            $usuario->setFotoDePerfil(isset($row['fotoUsuario']) ? $row['fotoUsuario'] : null); // Defina a foto de perfil aqui
+            $usuario->setFotoDePerfil(isset($row['fotoPerfil']) ? $row['fotoPerfil'] : null); // Defina a foto de perfil aqui
             $publicacao->setUsuario($usuario);
             $publicacoes[] = $publicacao;
         }
@@ -206,6 +206,7 @@ public function contarCurtidas($idPub) {
 
     return $resultado->fetch(PDO::FETCH_ASSOC); // Retornar o resultado da consulta
 }
+
 
 
 

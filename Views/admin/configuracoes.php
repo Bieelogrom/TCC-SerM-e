@@ -16,6 +16,7 @@ include('../../components/ADMIN/navbar/navSuperior.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADM Configurações</title>
     <link rel="stylesheet" href="../../css/ADMIN/configuracoes.css">
+    <link class="img-head" rel="icon" href="../../../img/siteSerMae/bemvinda/serMãe.png">
 
     <link rel="stylesheet" href="../../components/ADMIN/navbar/navSuperior.css">
     <!-- CSS Navbar -->
@@ -30,7 +31,7 @@ include('../../components/ADMIN/navbar/navSuperior.php');
         <div class="conteudo-adm">
             <div class="navAdm">
                 <div class="Adm">
-                    <img src="../../img/ADMIN/perfil.png" alt="">
+                <img src="../../img/siteSerMae/Perfis/<?= $_SESSION['fotoPerfil'] ?>" alt="Foto ADM">
 
                     <div class="nomeFuncao">
                         <h2><?= $_SESSION['nomeUsuario']; ?></h2>
@@ -94,22 +95,20 @@ include('../../components/ADMIN/navbar/navSuperior.php');
         </div><!-- Fim Modal Header -->
 
             <div id="modalBodyConta">
-                <form action="#">
-                    <div class="mudarNomeConta">
-                        <label for="">Novo Nome</label>
-                        <input type="text">
-                    </div><!-- Fim Mudar Nome Conta -->
-                    <div class="mudarEmailConta">
-                        <label for="">Novo Email</label>
-                        <input type="email">
-                    </div><!-- Fim Mudar Email Conta -->
-                    <div class="mudarSenhaConta">
-                        <label for="">Nova senha</label>
-                        <input type="password">
-                    </div><!-- Fim Mudar Email Conta -->
+                <div class="fotoAdmConta">
+                    <img src="../../img/ADMIN/perfil.png" alt="">
 
-                    <button type="submit">Alterar</button>
-                </form>
+                    <button class="editarInfos">Editar</button>
+                </div><!-- Fim FotoAdmConta -->
+                <div class="nomeAdmConta">
+                    <input type="text" class="nomeDoAdm" value="Neusa Cabral" readonly>
+                </div><!-- Fim NomeAdmConta -->
+                <div class="apelidoAdmConta">
+                    <input type="text" class="apelidoDoAdm" value="Neusinha" readonly>
+                </div><!-- Fim ApelidoAdmConta -->
+                <div class="bioAdmConta">
+                    <input type="text" class="bioDoAdm" value="Olá, sou novo no SerMãe!" readonly>
+                </div><!-- Fim BioAdmConta -->
             </div><!-- Fim Modal Body -->
         </div><!-- Fim Modal Excluir -->
 

@@ -19,7 +19,7 @@
 /* DashBoard */
 .home-section{
     position: relative;
-    left: 260px;
+    left: 170px;
     width: calc(100% - 260px);
     height: 100%;
 }

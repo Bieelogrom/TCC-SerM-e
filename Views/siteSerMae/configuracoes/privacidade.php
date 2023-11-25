@@ -21,6 +21,7 @@ $imgPublicacao = $publicacao->getImgPublicacao();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../../../css/siteSerMae/home/inicioSite.css">
+    <link class="img-head" rel="icon" href="../../../img/siteSerMae/bemvinda/serMãe.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../../../css/siteSerMae/configuracoes/privacidade.css">
     <title>Privacidade</title>
@@ -56,7 +57,7 @@ $imgPublicacao = $publicacao->getImgPublicacao();
     <div class="opcoes">
         <div class="nav-conta">
             <h1 class="text-1">Privacidade</h1>
-            <a href="index.php"><button class="btn-conta-voltar">Voltar</button></a>
+            <a class="btn-confiure" href="index.php"><button>Voltar</button></a>
         </div>
 
         <div class="menu">
@@ -67,17 +68,20 @@ $imgPublicacao = $publicacao->getImgPublicacao();
               <span><i class="fa-solid fa-caret-right"></i></span>
             </a>
             <div class="modal" tabindex="0">
-                <p class="text">Deseja privar sua conta?</p>
-              <div class="buttonsSair">
-                <button class="yesSair">Sim</button>
-                <button class="noSair close-button">Não</button>
+              <div class="itens-modal">
+                    <p class="text">Deseja privar sua conta?</p>
+                    <div class="buttonsSair">
+                    <button class="yesSair">Sim</button>
+                    <button class="noSair close-button">Não</button>
+              </div>
+            
               </div>
             </div>
           </div>
 
 
           <div class="modal-container">
-            <a href="#" class="sub-menu-link-blocked" id="openModalButton">
+            <a href="#" class="sub-menu-link" id="openModalButton">
               <p>Contas bloqueadas</p>
               <span><i class="fa-solid fa-caret-right"></i></span>
             </a>

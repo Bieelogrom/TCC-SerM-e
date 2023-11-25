@@ -92,6 +92,9 @@ nav {
   justify-content: space-between;
   align-items: center;
 }
+.nav-container .add-post{
+  opacity: 0;
+}
 nav .search-bar {
   padding: var(--search-padding);
   background: var(--branco);
@@ -150,8 +153,8 @@ main {
   height: 320px;
 }
 .boas-vindas img {
-  width: 100%;
-  margin-top: 2rem;
+  width: 80%;
+  margin-top: 1.5rem;
 }
 .boas-vindas h1 {
   margin-top: 1rem;
@@ -180,17 +183,6 @@ aside .menu-item span i {
   position: relative;
   color: var(--branco);
 }
-aside .nofty-counter {
-  background: red;
-  color: var(--branco);
-  width: fit-content;
-  font-size: 0.7rem;
-  border-radius: 50%;
-  padding: 0.1rem 0.4rem;
-  position: absolute;
-  top: 0.7rem;
-  left: 2.2rem;
-}
 aside .menu-item h3 {
   margin-left: 1.5rem;
   font-size: 1rem;
@@ -215,7 +207,7 @@ aside .menu-item:first-child {
   border-top-left-radius: var(--card-border-radius);
   border-top-right-radius: var(--card-border-radius);
 }
-aside .menu-item:nth-last-child(2) {
+aside .menu-item:nth-last-child(1) {
   overflow: hidden;
   border-bottom-left-radius: var(--card-border-radius);
   border-bottom-right-radius: var(--card-border-radius);
@@ -242,7 +234,7 @@ aside .menu-item:nth-last-child(2) {
   padding: 0.4rem var(--card-padding);
   border-radius: var(--border-radius);
   background: var(--rosa);
-  margin-top: 1rem;
+  margin-top: 3rem;
 }
 .main-middle .add-post input[type="text"] {
   justify-self: start;
@@ -252,7 +244,7 @@ aside .menu-item:nth-last-child(2) {
   color: var(--preto);
   margin-left: 2rem;
 }
-.main-middle .add-post .profile-picture {
+.nav-container .profile-picture {
   width: 2.8rem;
 }
 
@@ -284,6 +276,7 @@ aside .menu-item:nth-last-child(2) {
   border-radius: var(--card-border-radius);
   overflow: hidden;
   margin: 0.8rem 0;
+  background-color: var(--preto);
 }
 .text-coment {
   color: var(--roxa);
@@ -578,35 +571,74 @@ aside .menu-item:nth-last-child(2) {
 }
 /*final melhores amigos*/
 
-/*inicio dicas destaques*/
-.corpo-destaques {
+/* Início comunidades */
+.corpo-comunidades {
   margin-top: 2rem;
-  border: 2px solid var(--roxa);
   border-radius: var(--card-border-radius);
   padding: var(--card-border-radius);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: var(--branco);
 }
-.corpo-destaques h3 {
+.corpo-comunidades h3 {
   text-align: center;
-  color: var(--preto);
-  font-size: 25px;
-}
-.dicas-destaques {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-.card-dicas {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-.card-dicas .txt-dicas {
-  font-size: 20px;
   color: var(--roxa);
+  font-size: 40px;
+}
+.grupos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.card-grupo {
+  text-align: center;
+  margin: 1rem;
+  transition: transform 0.3s;
+  width: 100px; 
+}
+.card-grupo:hover {
+  transform: scale(1.05);
+}
+.card-grupo h2 {
+  font-size: 16px;
   font-weight: bold;
+  margin-top: 0.5rem;
+  color: var(--roxa);
 }
 
-/*final dicas destaques*/
+.card-grupo .img-card {
+  width: 60px; 
+  height: 60px; 
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid var(--preto);
+  margin: 0 auto;
+}
+.card-grupo .image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card-grupo .btn-comunidade {
+  border-radius: var(--border-radius);
+  background: var(--roxa);
+  color: var(--branco);
+  font-weight: bold;
+  height: 2rem;
+  width: 6rem;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s; /* Adiciona a propriedade transform */
+}
+.card-grupo .btn-comunidade:active {
+  transform: scale(0.9); /* Efeito de clique: escala o botão ao ser clicado */
+}
+
+/* Final comunidades */
+
+
 
 /*final main right*/
 
@@ -773,3 +805,28 @@ display: flex;
   }
 }
 /*=========final media query=========*/
+
+.group{
+  display: flex;
+}
+
+
+
+
+
+
+/*button adm inicio*/
+.btn-adm{
+  background: var(--roxa);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2.5rem;
+  margin-top: 2rem;
+  border-radius: var(--border-radius);
+  padding: var(--btn-padding);
+  color: var(--branco);
+  
+}
+/*button adm final*/

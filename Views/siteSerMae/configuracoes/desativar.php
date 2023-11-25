@@ -21,6 +21,7 @@ $imgPublicacao = $publicacao->getImgPublicacao();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desativar ou Excluir Conta</title>
+    <link class="img-head" rel="icon" href="../../../img/siteSerMae/bemvinda/serMãe.png">
     <link rel="stylesheet" href="../../../css/siteSerMae/configuracoes/desativar.css">
     <link rel="stylesheet" href="../../../css/siteSerMae/home/inicioSite.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -54,11 +55,12 @@ $imgPublicacao = $publicacao->getImgPublicacao();
     <!--Main left fim-->
 
 
-    <div class="container-desativar">
+
         <div class="nav-conta">
             <h1 class="text-1">Desativar</h1>
             <a href="conta.php"><button class="btn-conta-voltar">Voltar</button></a>
         </div>
+
         <form class="form-desativar">
             <p class="text-2">Escolha o que você deseja fazer com sua conta:</p><hr><br>
 
@@ -94,7 +96,6 @@ $imgPublicacao = $publicacao->getImgPublicacao();
             </div>
 
         </form>
-    </div>
 
 
     </div>

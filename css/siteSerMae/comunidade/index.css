@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Neuton:wght@200&family=Share+Tech+Mono&display=swap');
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    text-decoration: none;
+    list-style: none;
+    border: none;
+}
+:root{
+    --roxa: #a683ff;
+    --verde: #cae4ce;
+    --azul:  #d2ecf2;
+    --rosa:  #ffe3dd;
+    --branco: #fff;
+    --preto: #000;
+
+    --btn-padding:.6rem 2rem;
+    --border-radius: 2rem;
+    --card-border-radius:1rem;
+    --search-padding:.6rem 1rem;
+    --card-padding:.1rem;
+}
+body{
+    font-family: 'Neuton', serif;
+    color: var(--preto);
+    background: var(--branco);
+}
+
+/*inicio corpo grupos*/
+.main-comunidade {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.head-comunidade {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.listGroups {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+.head-comunidade{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+.head-comunidade .text-comunidade{
+    font-size: 35px;
+    white-space: nowrap;
+    color: var(--roxa);
+    text-align: center;
+    margin-left: 4rem;
+}
+.head-comunidade .add-group{
+    margin-left: 25rem;
+    border-radius: var(--border-radius);
+    padding: var(--btn-padding);
+    font-weight: bold;
+    color: var(--branco);
+    cursor: pointer;
+    background: var(--roxa);
+    transition: all ease .1s;
+}
+.head-comunidade .add-group:hover{
+    opacity: 0.6;
+}
+/* Adicione media queries conforme necessário para ajustar o layout em tamanhos de tela menores */
+@media only screen and (max-width: 768px) {
+    .listGroups {
+        grid-template-columns: 1fr;
+    }
+}
+/*final corpo grupos*/
+
+/*inicio modal*/
+.modal {
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    max-width: 100%;
+    width: 35%;
+    margin-top: -5%;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modal-form {
+    text-align: center;
+    max-width: 100%;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.modal-form h2 {
+    color: var(--roxa);
+}
+.modal-form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+.modal-form input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--roxa);
+}
+.modal-form button {
+    background-color: var(--roxa);
+    color: var(--branco);
+    padding: var(--btn-padding);
+    font-weight: bold;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    margin-top: 2rem;
+}
+.modal-form button:hover {
+    opacity: 0.8;
+}
+.img-group{
+    max-width: 30%;
+    height: auto;
+    cursor: pointer;
+    position: absolute;
+    top: 15%;
+    left: 35%;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.group-add-img{
+    display: flex; 
+}
+.dados-group{
+    margin-top: 10rem;
+}
+.dados-group label, .dados-group input {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+.create-group-btn {
+    width: 100%;
+}
+.add{
+    flex-direction: row;
+    align-items: center;
+    display: flex;
+}
+.dados-group select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    appearance: none; /* Remover estilo padrão do sistema */
+    background: #fff url('https://cdn3.iconfinder.com/data/icons/iconic-1/32/dropdown_arrow-512.png') no-repeat right 10px center; /* Ícone para o dropdown */
+    background-size: 20px; /* Tamanho do ícone */
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.dados-group select:focus {
+    outline: none;
+    border-color: #66afe9; /* Cor da borda quando focado */
+}
+
+/* Estilo para o input de texto */
+.dados-group input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    transition: border-color 0.3s;
+}
+
+.dados-group input:focus {
+    outline: none;
+    border-color: #66afe9; /* Cor da borda quando focado */
+}
+/* Adicione este estilo para tornar a lista de grupos responsiva */
+.listGroups {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: column-reverse;
+    margin-left: 5%;
+    margin-top: 5%;
+    gap: 50px;
+}
+
+@media only screen and (max-width: 500px) {
+    .modal-content {
+        width: 100%;
+    }
+    .listGroups {
+        flex-direction: column;
+    }
+    .add{
+        flex-direction: column;
+    }
+    .add .text-comunidade{
+        margin-right: 20rem;
+    }
+    .add .add-group{
+        margin-top: 5rem;
+    }
+}
+/*final modal*/
+
+.group{
+    display: flex;
+}

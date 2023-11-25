@@ -78,6 +78,7 @@ document.querySelectorAll('.action-button span:first-child i').forEach(liked=>{
        liked.classList.toggle('liked');
     })
 })
+
 /*liked botão*/  
 
 
@@ -91,8 +92,5 @@ document.querySelector('.mini-button').addEventListener('click',()=>{
 document.querySelector('.mini-button').addEventListener('dblclick',()=>{
     document.querySelector('.add-post-popup').style.display='flex'
 });
-
-
-
 
 

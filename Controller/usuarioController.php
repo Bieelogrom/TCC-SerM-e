@@ -19,7 +19,7 @@ if (isset($_POST['registrar'])) {
     $usuario->setDataNascimentoUsuario($d['dataNasc']);
 
     $palavras = array("MomLife", "MommyWarrior", "MommaMagic", "MamaVibe", "MomStrong", "TenderHeart");
-    $apelido = "@".$palavras[array_rand($palavras)] . rand(10, 100);
+    $apelido = "@" . $palavras[array_rand($palavras)] . rand(10, 100);
 
     $usuario->setApelidoUsuario($apelido);
 
@@ -85,7 +85,7 @@ if (isset($_POST['registrar'])) {
                 } else {
                     header('Location: ../index.php?login=erro');
                     exit();
-                }//outros status abaixo
+                } //outros status abaixo
             } else if ($logado[0]['statusConta'] == 2) {
                 header('Location: ../index.php?login=suspenso');
                 exit();
@@ -134,29 +134,27 @@ if (isset($_POST['registrar'])) {
 
     header("Location: ../Views/siteSerMae/home/home.php");
 
-    
+
 
     $usuariodao->tipoDaConta($usuario);
+} else if (isset($_POST['salvarDados'])) {
+    $idUsuario = $_POST['id'];
+    $apelido = $_POST['apelido'];
+    $tipoPerfil = $_POST['tipo'];
+
+    // $arroba = "@";
+    // $apelido_verificado = strpos($apelido, $arroba);
+
+    try {
+        $sql = "UPDATE tbusuario SET apelidoUsuario = :apelido, tipoConta = :tipoConta WHERE idUsuario = :idUsuario";
+        $att = conexao::getConexao()->prepare($sql);
+        $att->bindParam(':apelido', $apelido);
+        $att->bindParam(':tipoConta', $tipoPerfil);
+        $att->bindParam(':idUsuario', $idUsuario);
+        $att->execute();
+
+        echo 'Atualizado com sucesso!';
+    } catch (PDOException $e) {
+        echo $e->getMessage();
+    }
 }
-
-
-//ROTINA DE ATUALIZAÇÃO DO PERFIL UTILIZADA NO attPerfilPopup, component...
-if (isset($_POST['salvar'])) {
-    session_start();
-    $id = $_SESSION['ID_conta'];
-    $email = $_POST['email'];
-    $username = $_POST['username'];
-    $nomeUsuario = $_POST['position'];
-    $phone = $_POST['phone'];
-
-    $usuario->setIdUsuario($id);
-    $usuario->setEmailUsuario($email);
-    $usuario->setApelidoUsuario($username);
-    $usuario->setNomeUsuario($nomeUsuario);
-    $usuario->setTelefoneUsuario($phone);
-
-    $usuariodao->updateUsuario($usuario);
-
-    echo "DEU BOM";
-}
-

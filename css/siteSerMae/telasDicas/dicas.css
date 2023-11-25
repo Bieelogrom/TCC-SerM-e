@@ -29,6 +29,12 @@ body{
 }
 
 /*//////////////////INICIO CSS HOME-DICA//////////////////*/
+.corpo-dicas{
+    position: fixed;
+    top: 15%;
+    left:30%;
+    flex-direction: column;
+}
 /*carousel inicio*/
 #slider-dicas{
     margin: 0 auto;
@@ -148,12 +154,13 @@ body{
 .dicas{
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     margin: 0 auto;
     margin-left: 5.5rem;
+    margin-top: 2rem;
     margin-right: 0; 
-    gap: 1rem;
+    gap: 5rem;
 }
 .text-dicas{
     color: var(--roxa);
@@ -169,16 +176,16 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    gap: 15rem;
     text-align: center; 
+    gap: 5rem;
 }
 .cards-dicas-2{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    gap: 15rem;
     text-align: center;
+    gap: 5rem;
 }
 .img-dicas{
     width: 7rem;

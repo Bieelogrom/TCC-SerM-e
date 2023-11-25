@@ -21,6 +21,7 @@ $imgPublicacao = $publicacao->getImgPublicacao();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desativar ou Excluir Conta</title>
+    <link class="img-head" rel="icon" href="../../../img/siteSerMae/bemvinda/serMãe.png">
     <link rel="stylesheet" href="../../../css/siteSerMae/configuracoes/engajamento.css">
     <link rel="stylesheet" href="../../../css/siteSerMae/home/inicioSite.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -55,16 +56,17 @@ $imgPublicacao = $publicacao->getImgPublicacao();
 
 
     <!--corpo engajamento inicio-->
-    <div class="corpo_engajamento">
 
         <div class="nav-conta">
             <h1 class="text-1">Engajamento</h1>
             <a href="conta.php"><button class="btn-conta-voltar">Voltar</button></a>
         </div>
 
+
+        <div class="corpo_engajamento">
         <!--inicio contagem perfil-->
         <div class="container-contagem">
-            <h2 class="text-1">Insights da conta</h2>
+            <h2 class="text-1-insights">Insights da conta</h2>
             <div class="reacts-numbers">
                 <div class="icons">
                     <div class="icon-number">

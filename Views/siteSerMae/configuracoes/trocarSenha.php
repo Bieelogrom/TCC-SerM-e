@@ -21,6 +21,7 @@ $imgPublicacao = $publicacao->getImgPublicacao();
     <title>Trocar Senha - SerMãe</title>
     <link rel="stylesheet" href="../../../css/siteSerMae/configuracoes/trocarSenha.css">
     <link rel="stylesheet" href="../../../css/siteSerMae/home/inicioSite.css">
+    <link class="img-head" rel="icon" href="../../../img/siteSerMae/bemvinda/serMãe.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
@@ -53,7 +54,7 @@ $imgPublicacao = $publicacao->getImgPublicacao();
 
         <div class="nav-conta">
             <h1 class="text-1">Trocar Senha</h1>
-            <a href="conta.php"><button class="btn-conta-voltar">Voltar</button></a>
+            <a class="btn-confiure" href="conta.php"><button class="btn">Voltar</button></a>
         </div>
 
         <form class="form-senha">

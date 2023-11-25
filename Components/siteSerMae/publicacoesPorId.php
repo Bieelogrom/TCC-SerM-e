@@ -54,7 +54,7 @@ include_once("../../../dao/atualizarSessão.php");
             <div class="feed-top">
                 <div class="user">
                     <div class="profile-picture">
-                        <a href="../perfilUser/perfil.php?id=<?= $usuario->getIdUsuario() ?>"><img src="../../../img/siteSerMae/Perfis/<?= $fotoPerfil ?>" alt="PErfil"></a>
+                    <a href="../perfilUser/perfil.php?id=<?= $usuario->getIdUsuario() ?>"><img style="height: 100%; width:100%" src="../../../img/siteSerMae/Perfis/<?= $fotoPerfil ?>" alt=""></a>
                     </div>
 
                     <div class="info">

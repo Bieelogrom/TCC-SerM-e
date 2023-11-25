@@ -1,8 +1,14 @@
 <?php
 
-session_start();    
-include_once("../../dao/atualizarSessão.php");
 include('../../components/ADMIN/navbar.php');
+include_once "../../Dao/validador_acesso.php";
+include_once('../../Dao/usuarioDAO.php');
+include_once('../../Model/usuario.php');
+include_once('../../Dao/conexãoDAO.php');
+
+$usuarios = new Usuario;
+$usuariodao = new usuarioDAO;
+
 
 ?>
 
@@ -14,6 +20,7 @@ include('../../components/ADMIN/navbar.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar</title>
     <link rel="stylesheet" href="../../css/ADMIN/style.css">
+    <link class="img-head" rel="icon" href="../../../img/siteSerMae/bemvinda/serMãe.png">
 
     <!-- CSS Navbar -->
     <link rel="stylesheet" href="../../css/ADMIN/ADM.css">

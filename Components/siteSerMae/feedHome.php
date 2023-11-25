@@ -54,7 +54,7 @@ include_once("../../../dao/atualizarSessão.php");
             <div class="feed-top">
                 <div class="user">
                     <div class="profile-picture">
-                        <a href="../perfilUser/perfil.php?id=<?= $usuario->getIdUsuario() ?>"><img src="../../../img/siteSerMae/Perfis/<?= $fotoPerfil ?>" alt=""></a>
+                        <a href="../perfilUser/perfil.php?id=<?= $usuario->getIdUsuario() ?>"><img style="height: 100%; width:100%" src="../../../img/siteSerMae/Perfis/<?= $fotoPerfil ?>" alt=""></a>
                     </div>
 
                     <div class="info">
@@ -131,7 +131,6 @@ include_once("../../../dao/atualizarSessão.php");
                     <span><i class="fa fa-comment-dots"  id="<?= $id ?>"></i></span>
                 </div>
                 <div class="bookmark">
-
                     <i class="fa fa-bookmark" id="<?= $id ?>"></i>
                 </div>
             </div>
@@ -168,5 +167,7 @@ include_once("../../../dao/atualizarSessão.php");
     </div>
 </div>
 </div>
+
+
 
 <!--Final do Feed-->

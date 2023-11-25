@@ -1,4 +1,5 @@
- 
+
+
  <!--start aside bar-->
  <aside class="corpo-menu">
     <a class="menu-item active" href="./../../../Views/siteSerMae/home/home.php">
@@ -13,8 +14,12 @@
 
     <a class="menu-item" id="Notify-box" href="./../../../Views/siteSerMae/notificacoes/index.php">
         <span><i class="fa-sharp fa-solid fa-bell"></i></span>
-        <small class="nofty-counter" id="ntCounter1">7+</small>
         <h3>Notificações</h3>
+    </a>
+
+    <a class="menu-item" id="Notify-box" href="./../../../Views/siteSerMae/comunidade/index.php">
+        <span><i class="fa-solid fa-user-group"></i></span>
+        <h3>Comunidades</h3>
     </a>
 
     <a class="menu-item" id="theme" href="./../../../Views/siteSerMae/telaDicas/dicas.php">
@@ -27,10 +32,19 @@
         <h3>Configurações</h3>
     </a>
 
-    <!--Adicionar posters btn-->
-    <label for="add-post" class="btn btn-primary btn-lg" id="crate-lg">Nova Publicação</label>
-    <!--Adicionar posters btn-->
-    
-</aside><br>
+
+
+</aside><br>    
+
+
+
+<?php
+if (isset($_SESSION['nivelConta']) && $_SESSION['nivelConta'] == 3) { ?>
+    <button onclick="admin()" class="btn-adm">Tela ADMIN</button>
+<?php }
+?>
+<div id="fade" class="hide"></div>
+
+  
 
 <!--end aside bar-->

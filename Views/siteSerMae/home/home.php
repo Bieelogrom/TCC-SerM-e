@@ -17,9 +17,10 @@ $imgPublicacao = $publicacao->getImgPublicacao();
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../css/siteSerMae/home/inicioSite.css">
+    <link class="img-head" rel="icon" href="../../../img/siteSerMae/bemvinda/serMãe.png">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!--link swiper-->
@@ -37,7 +38,6 @@ $imgPublicacao = $publicacao->getImgPublicacao();
     <!--Main-->
     <main>
     <div class="container main-container">
-
 
     <!--Main left inicio-->
     <div class="main-left">
@@ -63,7 +63,10 @@ $imgPublicacao = $publicacao->getImgPublicacao();
                <!--post input-->
                <form class="add-post input-post">
                 <input type="text" placeholder="No que você está pensando?" id="add-post">
-                <input type="submit" value="Postar" class="btn btn-primary">
+                    <!--Adicionar posters btn-->
+                    <label for="add-post" class="btn btn-primary " id="crate-lg">Postar</label>
+                <!--Adicionar posters btn-->
+    
                </form>
 
                <!--Inicio do Feed-->
@@ -81,7 +84,6 @@ $imgPublicacao = $publicacao->getImgPublicacao();
                     </div>
     </div>
     <!--Main middle fim-->
-
 
 
     <!--Main right inicio-->
@@ -135,29 +137,53 @@ $imgPublicacao = $publicacao->getImgPublicacao();
                     </div>
                     <!--final melhores amigos-->
 
-                    
-                    <!--inicio dicas destaques-->
-                    <div class="corpo-destaques">
-                        <h3>Dicas destaques</h3>
-
-                        <div class="dicas-destaques">
-
-                            <div class="card-dicas">
-                                <h3 class="txt-dicas">Saúde para a vida</h3>
-                                <img class="img-dica" src="../../../img/siteSerMae/home/destaques/1.png" alt="">
+                
+                  <!-- Início dicas destaques -->
+                    <div class="corpo-comunidades">
+                        <h3>Comunidades<br>oficiais</h3>
+                        <div class="grupos">
+                            <div class="card-grupo">
+                                <div class="img-card">
+                                    <img class="image" src="../../../img/siteSerMae/home/comunidades/2.jpg" alt="Saúde Mental">
+                                </div>
+                                <h2>Saúde Mental</h2>
+                                <a href="https://t.me/+3bbIupexsok3MGFh"><button class="btn-comunidade" type="button">Entrar</button></a>
+                                
                             </div>
-
+                            <div class="card-grupo">
+                                <div class="img-card">
+                                    <img class="image" src="../../../img/siteSerMae/home/comunidades/1.png" alt="Saúde Física">
+                                </div>
+                                <h2>Saúde Física</h2>
+                                <a href="https://t.me/+Cqi-E0xxMXAyMzcx"><button class="btn-comunidade" type="button">Entrar</button></a>
+                                
+                            </div>
+                            <div class="card-grupo">
+                                <div class="img-card">
+                                    <img class="image" src="../../../img/siteSerMae/home/comunidades/3.png" alt="Maternidade">
+                                </div>
+                                <h2>Maternidade</h2>
+                                <a href="https://t.me/+A5pqxil1FCI3M2Rh"><button class="btn-comunidade" type="button">Entrar</button></a>
+                               
+                            </div>
+                            <div class="card-grupo">
+                                <div class="img-card">
+                                    <img class="image" src="../../../img/siteSerMae/home/comunidades/f.jpg" alt="Filhos">
+                                </div>
+                                <h2>Filhos</h2>
+                                <a href="https://t.me/+5Wfr4RXoGDA5ODE5"><button class="btn-comunidade" type="button">Entrar</button></a>
+                               
+                            </div>
                         </div>
-                       
                     </div>
-                    <!--dicas destaques-->
+                    <!-- Fim dicas destaques -->
+
     </div>
     <!--Main right fim-->
 
             </div>
         </main>
     <!--Main-->
-
 
 
 
@@ -168,6 +194,8 @@ $imgPublicacao = $publicacao->getImgPublicacao();
     ?>
     <!--inicio perfil-popUp-->
 
+
+
     <!--inicio adicionar post-->
     <?php
     include('../../../Components/siteSerMae/adicionarPost.php')
@@ -177,17 +205,17 @@ $imgPublicacao = $publicacao->getImgPublicacao();
 
 
 
-    
+<script src="../../../js/siteSerMae/home/site.js"></script>
 
-    <!--link JS swiper story-->
-    <script type="module">
-        import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.mjs'
-        let swiper = new Swiper(".mySwiper", {
-         slidesPerView: 6,   
-         spaceBetween: 5,
-        })
-    </script>
-    <!--link JS swiper story-->
+<!--link JS swiper story-->
+<script type="module">
+    import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.mjs'
+    let swiper = new Swiper(".mySwiper", {
+        slidesPerView: 6,   
+        spaceBetween: 5,
+    })
+</script>
+<!--link JS swiper story-->
 
 
 <!--modal denunciar inicio-->
@@ -215,6 +243,8 @@ $imgPublicacao = $publicacao->getImgPublicacao();
 </script>
 <!--modal denunciar final-->
 
+
+
 <!--modal2 denunciar inicio-->
 <script>
 const openModalButton1 = document.getElementById("openModalButton1");
@@ -236,9 +266,30 @@ window.addEventListener("click", function(event) {
     }
 });
 </script>
+<!--modal2 denunciar final-->
+
+<!--efeito curtida inicio-->
+<script>
+    function interacaoIcone(id) {
+        // Obtenha o elemento pelo ID
+        var iconElement = document.getElementById(id);
+
+        // Adicione a lógica desejada aqui
+        // Por exemplo, você pode mudar a cor ou adicionar uma classe CSS
+        if (iconElement.classList.contains('clicado')) {
+            iconElement.classList.remove('clicado');
+        } else {
+            iconElement.classList.add('clicado');
+        }
+
+        // Ou você pode fazer outras operações desejadas
+        // Por exemplo, enviar uma solicitação AJAX para indicar que o ícone foi clicado
+        // ou atualizar um contador no servidor, etc.
+    }
+</script>
+<!--efeito curtida final-->
 
 <script src="../../../js/siteSerMae/home/jqueryS.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-<!--modal2 denunciar final-->
 </body>
 </html>

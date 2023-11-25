@@ -1,9 +1,12 @@
-<!--<?php
-include('../../Components/ADMIN/navbar.php');
-
-include('../../components/ADMIN/navbar/navSuperior.php');
+<?php
+include_once('../../components/ADMIN/navbar.php');
+include_once('../../components/ADMIN/navbar/navSuperior.php');
+include_once("../../dao/usuarioDAO.php");
+include_once("../../model/usuario.php");
+include_once("../../dao/atualizarSessão.php");
+$usuarioDAO = new usuarioDAO();
 ?>
--->
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -11,6 +14,7 @@ include('../../components/ADMIN/navbar/navSuperior.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mensagens</title>
+    <link class="img-head" rel="icon" href="../../../img/siteSerMae/bemvinda/serMãe.png">
     <link rel="stylesheet" href="../../css/ADMIN/mensagem.css">
 
     <!-- CSS NavbarSuperior -->

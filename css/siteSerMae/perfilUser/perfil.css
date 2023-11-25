@@ -97,24 +97,24 @@ body{
 }
 .papel-parede-img-perfil img:hover {
     filter: brightness(0.7);
+   
 }
 .papel-parede-img-perfil {
     position: sticky;
+    z-index: 1;
 }
 .perfil-img {
     position: absolute;
     bottom: -1.7rem;
     left: 2rem;
-    border: solid;
-    border-color: var(--preto);
     border-radius: 50%;
     object-fit: cover;
-    box-shadow: 2px 2px 5px rgb(0 0 0 / 30%);
-    transition: 0.25s;
     cursor: pointer;
     max-width: 6rem;
+    height: 100%;
     max-height: 6rem;
     top: 10rem;
+    z-index: 1;
 }
 .seguindo-seguidores {
     display: flex;
@@ -135,7 +135,9 @@ body{
     font-weight: bold;
 }
 
+
 /*inicio modal*/
+
 button {
     background: var(--roxa);
     border-radius: 19px;
@@ -150,6 +152,7 @@ button {
 }
   #open-modal {
     background-color: var(--roxa);
+    
   }
   button:hover {
     opacity: 1;
@@ -168,9 +171,9 @@ button {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 900px;
+    width: 350px;
     max-width: 90%;
-    height: 600px;
+    height: 400px;
     background-color: #fff;
     padding: 1.2rem;
     border-radius: 0.5rem;
@@ -189,6 +192,7 @@ button {
     border-bottom: 1px solid #ccc;
     margin-bottom: 1rem;
     padding-bottom: 1rem;
+
   }
   .modal-body p {
     margin-bottom: 1rem;
@@ -246,7 +250,8 @@ button {
 }
 
 .publicacao-card{
-    border-radius: 5px;
+    width: 100%;
+    height: 100%;
 }
 
 .publicacoes {
@@ -261,70 +266,74 @@ button {
 }
 
 .publicacao-item {
-    width: 400px;
-    height: 400px;
+    width: 250px;
+    height: 200px;
     position: relative; /* Define a posição como relativa */
+    border-radius: 10px;
 }
 
-.publicacao-item::before {
-    content: ""; /* Adicione um conteúdo vazio ao pseudo-elemento */
-    position: absolute;
-    top: 0;
-    left: 0;
+
+
+/* Adicione essas classes ao seu arquivo de estilo CSS */
+.publicacao-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.publicacao-item {
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.publicacao-card {
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0); /* Comece transparente */
-    transition: background-color 0.3s; /* Adicione uma transição suave de cor de fundo */
-    cursor:pointer;
+    height: auto;
+    border-radius: 10px;
 }
-
-.publicacao-item:hover::before {
-    background-color: rgba(0, 0, 0, 0.5); /* Escureça o fundo ao passar o mouse sobre o elemento */
-}
-
-/* Estilo adicional para o conteúdo do item (legenda, imagem, etc.) */
-.publicacao-conteudo {
-    position: relative;
-    z-index: 1; /* Certifique-se de que o conteúdo esteja acima do pseudo-elemento */
-}
-
-.card-2 {
-    display: none;
-    width: 200px;
-    padding: 20px;
-    text-align: center;
-    pointer-events: none;
-    justify-content: center;
-    flex-direction: row;
-    left: 13%;
-    margin-top: -40px;
-}
-
 .icons {
     display: flex;
-    color: white;
-    gap: 90px; /* Defina a quantidade desejada de espaço entre os ícones */
-    width: 90px;
-    height: 90px;
-    justify-content: center;
-    align-items: center;
-    z-index: 4;
+    justify-content: space-between;
+    margin-bottom: 10px;
 }
+.fa-solid {
+    font-size: 18px;
+    color: #555;
+    margin-right: 5px;
+}
+.fa-heart {
+    color: #e74c3c;
+}
+.fa-pen-to-square {
+    color: #3498db;
+}
+.fa-trash {
+    color: #e74c3c;
+}
+.tempo{
+    color: #777;
+    font-size: 25px;
+    margin: 0;
+    text-align: center;
+}
+.legenda{
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 5px;
+    text-align: center; 
+}
+/* Adicione mais estilos conforme necessário */
+
 
 /* Estilo adicional para os ícones, se necessário */
 .icons i {
     font-size: 24px;
 }
-
-  .publicacao-item:hover + .card-2 {
-    display: flex;
-    position: absolute;
-    top: 80%;
-  }
-  .publicacao-item>i:hover + .card-2{
-      display: none;
-  }
-
   #modal-excluir {
     position: fixed;
     left: 50%;
@@ -373,6 +382,21 @@ button {
     height: 40px;
     border-radius: 5px;
 }
+
+.selec{
+    border: 2px solid var(--roxa);
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+}
+
+/* Estilização do modal */
+
+
+
+  
+
+
 /*publicações, favoritos e dicas - final*/
 
 /*final informações do perfil*/

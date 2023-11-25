@@ -28,25 +28,30 @@ body{
     background: var(--branco);
 }
 
+
 .opcoes{
     display: flex;
-    justify-content: center;
+    margin-top: -5rem;
+}
+.text-titulo {
+    font-size: 40px;
+    font-weight: bold;
+    color: var(--roxa);
+    display: flex;
+    position: fixed;
+    top: 15%;
+    left:50%;
+    display: flex;
     flex-direction: column;
     line-height: 5rem;
 }
-.text-titulo{
-    font-size: 30px;
-    font-weight: bold;
-    position: absolute;
-    top: 8%;
-    left: 60%;
-    transform: translate(-50%, -50%);   
-    color: var(--roxa);
-}
-.opcoes .menu{
-    position: absolute;
-    top: 120px;
-    left: 230px;
+.menu{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 3.5rem;
+    margin-top: 25%;
+    margin-left: 1.5rem;
 }
 .opcoes .menu span i{
     font-size: 25px;
@@ -64,6 +69,7 @@ body{
     gap: 35rem;
     border: 2px solid transparent;
     transition: all ease .5s;
+    padding: 1.5rem;
 }
 .sub-menu-link:hover{
     border: 2px solid var(--roxa);

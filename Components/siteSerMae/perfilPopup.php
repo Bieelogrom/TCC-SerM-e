@@ -5,11 +5,10 @@
                 <h1></h1>
                 <p></p>
                 <div id="my-profile-picture">
-                    <img src="../../img/Perfis/<?= $_SESSION['fotoPerfil'] ?>">
+                    <a href="../../../Views/siteSerMae/perfilUser/perfil.php"><img style="height: 100%; width:100%" src="../../../img/siteSerMae/Perfis/<?= $_SESSION['fotoPerfil'] ?>" alt=""></a>
                 </div>
                 <label for="profile-upload" class="btn btn-primary btn-lg">Escolha uma foto</label>
                 <input type="file" accept="image/jpg, image/png, image/jpeg" id="profile-upload">
-                <a href="../../dao/logoff.php" class="btn btn-primary btn-lg">Sair</a>
             </div>
             <span class="close"><i class="fa fa-close"></i></span>
         </div>

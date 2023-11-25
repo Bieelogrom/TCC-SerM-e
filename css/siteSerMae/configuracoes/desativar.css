@@ -30,20 +30,20 @@ body{
 
 
 .text-1{
-  font-size: 30px;
+  font-size: 40px;
   font-weight: bold;
   color: var(--roxa);
 }
 .nav-conta{
-  position: absolute;
-  top: 50px;
-  left: 600px;
-  transform: translate(-50%, -50%); 
   display: flex;
+  margin-top: -30rem;
   flex-direction: row;
+  align-items: center;
   gap: 20rem;
+  margin-left: 10rem;
   white-space: nowrap;
 }
+
 .btn-conta-voltar{
   padding: var(--btn-padding);
   cursor: pointer;
@@ -56,13 +56,13 @@ body{
     font-size: 25px;
 }
 .form-desativar{
-    position: absolute;
-    top: 20%;
-    left: 35%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 50%;
+  position: absolute;
+  top: 35%;
+  left: 35%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 50%;
 }
 .opcoes-conta{
     display: flex;

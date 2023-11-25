@@ -13,6 +13,7 @@ include('../../components/ADMIN/navbar/navSuperior.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responder Mensagem</title>
     <link rel="stylesheet" href="../../css/ADMIN/responderMensagem.css">
+    <link class="img-head" rel="icon" href="../../../img/siteSerMae/bemvinda/serMãe.png">
 
     <!-- CSS NavbarSuperior -->
     <link rel="stylesheet" href="../../components/ADMIN/navbar/navSuperior.css">

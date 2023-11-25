@@ -13,13 +13,16 @@ $usuarioDAO = new usuarioDAO();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADM | SERMÃE</title>
+    <link rel="icon" href="../../img/siteSerMae/bemvinda/serMãe.png">
+    <title>Adm - Dashboard</title>
     <link rel="stylesheet" href="../../css/ADMIN/style.css">
+
+    <link rel="stylesheet" href="../../css/ADMIN/modalUsuario.css">
 
     <link rel="stylesheet" href="../../components/ADMIN/navbar/navSuperior.css">
     <!-- CSS Navbar -->
     <link rel="stylesheet" href="../../components/ADMIN/style.css">
-    <link rel="stylesheet" href="../../css/ADMIN/modal.css">
+  
     <!-- Imports -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- BoxIcons CDN links -->
@@ -27,7 +30,6 @@ $usuarioDAO = new usuarioDAO();
 </head>
 
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <section class="home-section">
         <div class="conteudo-adm">
@@ -57,45 +59,71 @@ $usuarioDAO = new usuarioDAO();
                 </div> <!-- Fim UserCadastrado -->
             </div><!-- Fim main-user -->
 
-            <div class="main-graficos" >
+            <div class="main-graficos">
+                <div class="grafico">
+                    <div class="colunas">
+                        <div class="escala-y">
+                            <div class="horas">7 hrs</div>
+                            <div class="horas">6 hrs</div>
+                            <div class="horas">5 hrs</div>
+                            <div class="horas">4 hrs</div>
+                            <div class="horas">3 hrs</div>
+                            <div class="horas">2 hrs</div>
+                            <div class="horas">1 hr</div>
+                        </div><!-- Fim Escala Y -->
+                        <div class="areaGrafico">
+                            <div class="areaBarras">
+                                <div class="barras">
+                                    <div class="tempoApp rosa" style="height: 30%" data-val="Horas Online: 300"></div>
+                                    <div class="tempoApp azul" style="height: 40%" data-val="400"></div>
+                                </div>
+                                <div class="barras">
+                                    <div class="tempoApp rosa" style="height: 50%" data-val="Horas Online: 500"></div>
+                                    <div class="tempoApp azul" style="height: 10%" data-val="100"></div>
+                                </div>
+                                <div class="barras">
+                                    <div class="tempoApp rosa" style="height: 70%" data-val="Horas Online: 700"></div>
+                                    <div class="tempoApp azul" style="height: 80%" data-val="800"></div>
+                                </div>
+                                <div class="barras">
+                                    <div class="tempoApp rosa" style="height: 100%" data-val="Horas Online: 1000"></div>
+                                    <div class="tempoApp azul" style="height: 60%" data-val="600"></div>
+                                </div>
+                            </div><!-- Fim AreaBarras -->
+                            <div class="escala-x">
+
+                                <div class="meses">
+                                    Setembro <br>
+                                    2023
+                                </div><!-- Fim Barra Setembro -->
+                                <div class="meses">
+                                    Outubro <br>
+                                    2023
+                                </div><!-- Fim Barra Outubro -->
+                                <div class="meses">
+                                    Novembro <br>
+                                    2023
+                                </div><!-- Fim Barra Novembro -->
+                                <div class="meses">
+                                    Dezembro <br>
+                                    2023
+                                </div><!-- Fim Barra Dezembro -->
+                            </div><!-- Fim Escala X -->
+                        </div><!-- Fim AreaGrafico -->
+                    </div><!-- Fim Colunas -->
+                </div><!-- Fim Grafico -->
                 <div class="satisfacaoApp">
                     <div class="headerSatisfacaoApp">
-                        <p style="font-size: 16px">Usuárias por tipo de perfil</p>
+                        <p>Satisfação das usuarias com a serMãe</p>
                     </div><!-- Fim headerSatisfacaoApp -->
                     <div class="corpoSatisfacaoApp">
-                    <div>
-                        <canvas id="myChart"></canvas>
-                    </div>
-                    </div>
-                    
-
-                    <script>
-                        const ctx = document.getElementById('myChart');
-
-                        new Chart(ctx, {
-                            type: 'pie',
-                            data: {
-                                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                                datasets: [{
-                                    label: '# of Votes',
-                                    data: [12, 19, 3, 5, 2, 3],
-                                    borderWidth: 1
-                                }]
-                            },
-                            options: {
-                                scales: {
-                                    y: {
-                                        beginAtZero: true
-                                    }
-                                }
-                            }
-                        });
-                    </script>
+                        <div class="circular-progress">
+                            <span class="progress-value">0%</span>
+                        </div>
+                    </div><!-- Fim corpoSatisfacaoApp -->
                 </div><!-- Fim SatisfaçãoApp -->
             </div><!-- Fim MainGraficos -->
-            
 
-            <input type="text" id="inputBusca" placeholder="O que você procura?">
             <div class="tabelaUsuarias">
                 <table>
                     <thead>
@@ -138,12 +166,12 @@ $usuarioDAO = new usuarioDAO();
     </section>
 
     <dialog id="modal">
-        <button onclick="fecharModal()">Fechar modal</button>
+        <button onclick="fecharModal()" id="fechar-modal">X</button>
         <div class="conteudo_modal">
             <form action="../../Controller/usuarioController.php" method="post">
                 <input type="hidden" id="id_escondido" name="ID">
                 <span id="info_user"></span>
-
+                
             </form>
         </div>
     </dialog>

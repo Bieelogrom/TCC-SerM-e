@@ -9,6 +9,7 @@ include_once("../../../dao/atualizarSessão.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../css/siteSerMae/home/boasVindas.css">
     <link rel="stylesheet" href="../../../css/siteSerMae/select.css">
+    <link class="img-head" rel="icon" href="../../../img/siteSerMae/bemvinda/serMãe.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Seja Bem-vinda!</title>
@@ -32,7 +33,7 @@ include_once("../../../dao/atualizarSessão.php");
                     <div class="custom-select" style="width:250px;">
                         <select name="tipoPerfil">
                             <option value="0">Selecione seu tipo de perfil:</option>
-                            <option value="1">Mãe convencional</option>
+                            <option value="1">Mãe</option>
                             <option value="2">Gestante</option>
                             <option value="3">Tentante</option>
                             <option value="4">Mãe solo</option>

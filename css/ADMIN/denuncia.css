@@ -19,7 +19,7 @@
 /* Denuncia */
 .home-section{
     position: relative;
-    left: 240px;
+    left: 170px;
     width: calc(100% - 240px);
     height: 88vh;
 }

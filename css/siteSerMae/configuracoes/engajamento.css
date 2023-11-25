@@ -29,19 +29,18 @@ body{
 }
 
 
-.text-1{
-  font-size: 30px;
+.text-1 {
+  font-size: 40px;
   font-weight: bold;
   color: var(--roxa);
 }
 .nav-conta{
-  position: absolute;
-  top: 50px;
-  left: 600px;
-  transform: translate(-50%, -50%); 
   display: flex;
+  margin-top: -30rem;
   flex-direction: row;
+  align-items: center;
   gap: 20rem;
+  margin-left: 10rem;
   white-space: nowrap;
 }
 .btn-conta-voltar{
@@ -57,24 +56,31 @@ body{
   }
 
 
-  .corpo_engajamento{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .container-contagem{
-    position: absolute;
-    top: 100px;
-    left: 500px;
-  }
+.corpo_engajamento{
+  position: absolute;
+  top: 30%;
+  right: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 7rem;
+}
+.container-contagem{
+  display: flex;
+  margin-left:33rem;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.container-engajamento{
+  display: flex;
+  margin-left: 16rem;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+
   .container-contagem .text-1{
     color: var(--preto);
-  }
-  .reacts-numbers{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 2rem;
+    white-space: nowrap;
   }
   .reacts-numbers .icons{
     display: flex;
@@ -91,16 +97,6 @@ body{
     text-align: center;
     color: var(--preto);
     font-weight: bold;
-  }
-
-
-
-  .container-engajamento{
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   flex-direction: column;
-   margin-top: 150px;
   }
   .container-engajamento .text-1{
     display: flex;
@@ -120,9 +116,9 @@ body{
     display: flex;
     justify-content: center;
     flex-direction: column;
-    margin-left: 10rem;
-    margin-top: 4rem;
+    margin-left: 5rem;
   }
+
   .listGeral .options{
     display: flex;
     flex-direction: row;

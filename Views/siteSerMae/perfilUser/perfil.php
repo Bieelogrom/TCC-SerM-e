@@ -26,8 +26,9 @@ $usuariodao = new usuarioDAO();
     <link rel="stylesheet" href="../../../css/siteSerMae/perfilUser/perfil.css">
     <link rel="stylesheet" href="../../../css/siteSerMae/home/boasVindas.css">
     <link rel="stylesheet" href="../../../css/siteSerMae/home/inicioSite.css">
+    <link class="img-head" rel="icon" href="../../../img/siteSerMae/bemvinda/serMãe.png">
     <script src="../../../js/atualizarSessão.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+x    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Seu perfil</title>
 </head>
@@ -96,24 +97,16 @@ $usuariodao = new usuarioDAO();
                                             <p><?= $_SESSION['biografiaUsuario'] ?></p>
                                         </div>
 
-                                        <!--Botão editar perfil inicio-->
-                                        <button class="btn-editar-perfil" id="open-modal">Editar</button>
-                                        <?php
-                                        if ($_SESSION['nivelConta'] == 3) { ?>
-                                            <button onclick="admin()" class="btn-editar-perfil">Tela ADMIN</button>
-                                        <?php }
-                                        ?>
-                                        <div id="fade" class="hide"></div>
+                                      <!--Botão editar perfil inicio-->
+                                      <button class="btn-editar-perfil" id="open-modal">Editar</button>
 
                                         <div id="modal" class="hide">
-                                              <!--dados inicio-->
-                                              <?php
-                                                    include('../../../components/siteSerMae/attPerfilPopup.php')
+                                                <!--dados inicio-->
+                                                <?php
+                                                include('../../../components/siteSerMae/attPerfilPopup.php')
                                                 ?>
                                                 <!--dados final-->
                                         </div>
-
- 
                                     </div>
                                     <!--Botão editar perfil final-->
 
@@ -161,16 +154,13 @@ $usuariodao = new usuarioDAO();
                 $publicacao = new Publicacao();
 
                 $publicacoes = $publicacaodao->readPublicacaoByUsuario($id);
-                // var_dump($publicacoes);
                 if (count($publicacoes) > 0) {
                     foreach ($publicacoes as $publicacao) {
                         $publicacaoId = $publicacao->getIdPublicacao();
                         $legenda = $publicacao->getLegendaPublicacao();
                         $imgPublicacao = $publicacao->getImgPublicacao();
                         $quantidadeCurtidas = $publicacaodao->contarCurtidas($publicacaoId)['total_curtidas'];
-                        $numCurtidas = $publicacao->getNumCurtidasPublicacao();
                         $dataPublicacao = $publicacao->getDataPublicacao();
-                      
                 
                         // Converte a data da publicação em um timestamp
                         $timestampPublicacao = strtotime($dataPublicacao);
@@ -192,33 +182,33 @@ $usuariodao = new usuarioDAO();
                 
                         <div class="publicacao-container">
                             <div class="publicacao-item borda-arredondada">
-                                <img src="../../../img/siteSerMae/publicacao/<?php echo $imgPublicacao; ?>" alt="Imagem da Publicação" class="publicacao-card" style="width: 400px; height: 400px;">
+                                <img src="../../../img/siteSerMae/publicacao/<?php echo $imgPublicacao; ?>" alt="Imagem da Publicação" class="publicacao-card" >
                             </div>
                             <div class="card-2">
-                                <div class="icons">
-                                    
+                                <div class="icons">   
+                                        <i class="fa-solid fa-pen-to-square" data-action="edit" data-publicacao-id="<?php echo $publicacaoId; ?>"></i>
+                                        <!-- Button trigger modal -->
+                                        <a href="../../../Components/siteSerMae/removerPost.php?publicacaoId=<?php echo $publicacaoId; ?>">
+                                            <i class="fa-solid fa-trash" data-action="delete" data-publicacao-id="<?php echo $publicacaoId; ?>"></i>
+                                        </a>
                                 </div>
                             </div>
                             <i class="fa-solid fa-heart">
                             
-                                        <?php
-                                        if ($quantidadeCurtidas == 0) {
-                                            echo '0';
-                                        } else {
-                                            echo $quantidadeCurtidas;
-                                        }
-                                        ?>
-                                    </i>
+                                <?php
+                                if ($quantidadeCurtidas == 0) {
+                                    echo '0';
+                                } else {
+                                    echo $quantidadeCurtidas;
+                                }
+                                ?>
+                            </i>
                             
-                            <i class="fa-solid fa-pen-to-square" data-action="edit" data-publicacao-id="<?php echo $publicacaoId; ?>"></i>
-                            <!-- Button trigger modal -->
-                            <a href="../../../Components/siteSerMae/removerPost.php?publicacaoId=<?php echo $publicacaoId; ?>">
-                                <i class="fa-solid fa-trash" data-action="delete" data-publicacao-id="<?php echo $publicacaoId; ?>"></i>
-                            </a>
-                            <br><b><?php echo $legenda; ?></b>
-                
-                            <!-- Exibe o tempo decorrido formatado -->
-                            <p>Publicado <?php echo $tempoFormatado; ?></p>
+                            
+                                <br><b class="legenda"><?php echo $legenda; ?></b>
+                    
+                                <!-- Exibe o tempo decorrido formatado -->
+                                <p class="tempo">Publicado <?php echo $tempoFormatado; ?></p>
                         </div>
                     <?php
                     }
@@ -229,8 +219,7 @@ $usuariodao = new usuarioDAO();
                 
                 ?>
 
-                
-                
+               
             </div>
             </div>
             <!--começo do perfil final-->
@@ -286,10 +275,12 @@ $usuariodao = new usuarioDAO();
         <script>
         // Função para fechar o modal
         function closeModal() {
+       
         var modal = document.getElementById("modal");
         modal.classList.add("hide");
         var fade = document.getElementById("fade");
         fade.classList.add("hide");
+    
         }
 
         // Adicione um ouvinte de evento ao botão "Salvar Alterações"
@@ -299,9 +290,15 @@ $usuariodao = new usuarioDAO();
 
         // Feche o modal
         closeModal();
+ 
         });
         </script>
 
+       
+
+<script src="../../../js/siteSerMae/perfilUser/Editar.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
 </body>
 

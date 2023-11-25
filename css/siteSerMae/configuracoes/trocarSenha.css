@@ -28,32 +28,29 @@ body{
     background: var(--branco);
 }
 
-.text-1{
-    font-size: 30px;
+.text-1 {
+    font-size: 40px;
     font-weight: bold;
     color: var(--roxa);
-}
+  }
+
 .nav-conta{
-    position: absolute;
-    top: 50px;
-    left: 600px;
-    transform: translate(-50%, -50%); 
     display: flex;
+    margin-top: -30rem;
     flex-direction: row;
+    align-items: center;
     gap: 20rem;
+    margin-left: 10rem;
     white-space: nowrap;
   }
-.btn-conta-voltar{
-    padding: var(--btn-padding);
-    cursor: pointer;
-    transition: all ease .5s;
-    font-weight: bold;
+  .btn-confiure button{
     color: var(--roxa);
+    font-weight: bold;
     font-size: 20px;
-}
+  }
 .form-senha{
     position: absolute;
-    top: 20%;
+    top: 35%;
     left: 35%;
     display: flex;
     justify-content: center;
