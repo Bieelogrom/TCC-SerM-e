@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once("../../../dao/atualizarSessão.php");
 include_once "../../../Model/publicacao.php";
 include_once "../../../Dao/publicacaoDAO.php";
@@ -15,6 +15,7 @@ $imgPublicacao = $publicacao->getImgPublicacao();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,56 +25,70 @@ $imgPublicacao = $publicacao->getImgPublicacao();
     <link class="img-head" rel="icon" href="../../../img/siteSerMae/bemvinda/serMãe.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
 
-<!--navBar-->
-<?php
-    include('../../../components/siteSerMae/navBar.php');   
+    <!--navBar-->
+    <?php
+    include('../../../components/siteSerMae/navBar.php');
     ?>
     <!--navBar-->
 
     <!--Main-->
     <main>
-    <div class="container main-container">
+        <div class="container main-container">
 
-    <!--Main left inicio-->
-    <div class="main-left">
-                    <!--inicio Boas vindas-->
-                    <?php
-                    include('../../../components/siteSerMae/boasVindas.php')
-                    ?>
-                    <!--final Boas vindas-->
+            <!--Main left inicio-->
+            <div class="main-left">
+                <!--inicio Boas vindas-->
+                <?php
+                include('../../../components/siteSerMae/boasVindas.php')
+                ?>
+                <!--final Boas vindas-->
 
-                    <!--start aside bar-->
-                    <?php
-                    include('../../../components/siteSerMae/menu.php')
-                    ?>
-                    <!--end aside bar-->
-    </div>
-    <!--Main left fim-->
+                <!--start aside bar-->
+                <?php
+                include('../../../components/siteSerMae/menu.php')
+                ?>
+                <!--end aside bar-->
+            </div>
+            <!--Main left fim-->
 
-        <div class="nav-conta">
-            <h1 class="text-1">Trocar Senha</h1>
-            <a class="btn-confiure" href="conta.php"><button class="btn">Voltar</button></a>
+            <div class="nav-conta">
+                <h1 class="text-1">Trocar Senha</h1>
+                <a class="btn-confiure" href="conta.php"><button class="btn">Voltar</button></a>
+            </div>
+
+            <form class="form-senha">
+                <input type="hidden" class="IDDOFILHADAPUTA" id="<?= $_SESSION['ID_conta'] ?>">
+
+                <label class="label-senha" for="currentPassword">Senha Atual:</label>
+                <input class="input-senha" type="password" id="currentPassword" name="currentPassword" placeholder="Senha atual">
+
+                <label class="label-senha" for="newPassword">Nova Senha:</label>
+                <input class="input-senha" type="password" id="newPassword" name="newPassword" placeholder="Nova senha">
+
+                <label class="label-senha" for="confirmPassword">Confirme a Nova Senha:</label>
+                <input class="input-senha" type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirme a nova senha">
+
+                <button class="btn-senha btn salvar" type="button">Trocar Senha</button>
+                <h1 id="S2"></h1>
+            </form>
+
+
         </div>
+    </main>
 
-        <form class="form-senha">
-            <label class="label-senha" for="currentPassword">Senha Atual:</label>
-            <input class="input-senha" type="password" id="currentPassword" name="currentPassword" placeholder="Senha atual">
-            
-            <label class="label-senha" for="newPassword">Nova Senha:</label>
-            <input class="input-senha" type="password" id="newPassword" name="newPassword" placeholder="Nova senha">
-            
-            <label class="label-senha" for="confirmPassword">Confirme a Nova Senha:</label>
-            <input class="input-senha" type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirme a nova senha">
-            
-            <button class="btn-senha btn" type="submit">Trocar Senha</button>
-        </form>
-
-
-    </div>
-</main>
-
+    <dialog id="modal">
+        <button onclick="fecharModal()" id="fechar-modal">X</button>
+        <div class="conteudo_modal">
+            <form action="../../Controller/usuarioController.php" method="post">
+                <input type="hidden" id="id_escondido" name="ID">
+                <span id="info_user"></span>
+                
+            </form>
+        </div>
+    </dialog>
 
     <!--Inicio popup aria-->
     <!--final perfil-popUp-->
@@ -90,8 +105,10 @@ $imgPublicacao = $publicacao->getImgPublicacao();
     <!--Final popup aria-->
 
 
-<script src="./../../../js/siteSerMae/home/site.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="./../../../js/siteSerMae/home/site.js"></script>
+    <script src="../../../js/siteSerMae/configurações/tudo.js"></script>
+
 </body>
-</html>
-</body>
+
 </html>

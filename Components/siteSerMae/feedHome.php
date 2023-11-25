@@ -165,6 +165,8 @@ include_once("../../../dao/atualizarSessão.php");
     <div class="comments text-coment">
         Ver mais comentários
     </div>
+    
+
 </div>
 </div>
 

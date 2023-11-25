@@ -34,18 +34,19 @@ $(document).ready(function() {
         var idPublicacao = $(this).attr("id");
         var curtida = 0;
         var idUsuario = $('#id_do_usuario').val();
+        var acao = "1"
 
         // alert(curtida + idPublicacao + idUsuario)
         if (curtida !== '' && idPublicacao !== '' && idUsuario !== '') {
             var infos = {
                 idPublicacao: idPublicacao,
                 idUsuario: idUsuario,
-                curtida: curtida
+                curtida: curtida,
+                acao: acao
             }
         };
         $.post("./SALVAR.php", infos, function(retorno) {
             $('.fa-heart').html(retorno)
-            location.reload();
         })
     })
 
@@ -80,20 +81,21 @@ $(document).ready(function() {
         let idPublicacao = $(this).attr('id');
         let comentario = $('#add-post').val();
         var idUsuario = $('#id_do_usuario').val();
+        var comentarNoPost = 'b';
 
-        // alert(idPublicacao + idUsuario + comentario)
+        // alert(idPublicacao + idUsuario + comentario + comentarNoPost)
 
         if(idPublicacao !== '' && idUsuario !== '' && comentario !== ''){
             var criarComentario = {
                 idPublicacao: idPublicacao,
                 comentario: comentario,
-                idUsuario: idUsuario
+                idUsuario: idUsuario,
+                comentarNoPost: comentarNoPost
             }
         };
 
         $.post("../../../Controller/publicacaoController.php", criarComentario, function(pora){
-            location.reload();
-            // $('.btn-submitar').html(pora)
+            $('h1#rs').html(pora)
         })
 
 

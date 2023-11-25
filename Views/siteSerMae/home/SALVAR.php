@@ -35,17 +35,26 @@ if(isset($_POST["idPublicacao"], $_POST['idUsuario'], $_POST['acao'])){
         // Ação inválida
 
     }
-}else if(isset($_POST["idPublicacao"], $_POST['idUsuario'], $_POST['curtida'])){
+}else if(isset($_POST["acao"])){
     include_once('../../../dao/conexãoDAO.php');
 
     $curtida = $_POST['curtida'];
     $idUsuario = $_POST['idUsuario'];
     $idPublicacao = $_POST['idPublicacao'];
+    $dataAtual = date("Y-m-d H:i:s");
 
+    // echo $curtida . $idUsuario . $idPublicacao . $dataAtual;
+
+    
     try{
-        $curtimento = "INSERT INTO tbcurtidas (idUsuario, idPublicacao) VALUES (?, ?)";
+        $curtimento = "INSERT INTO tbcurtidas (idUsuario, idPublicacao, dataCurtida) VALUES (:idUsuario, :idPublicacao, :dataAtual)";
         $resultado = conexao::getConexao()->prepare($curtimento);
-        $resultado->execute([$idUsuario, $idPublicacao]);
+        $resultado->bindParam(':idUsuario', $idUsuario, PDO::PARAM_INT);
+        $resultado->bindParam(':idPublicacao', $idPublicacao, PDO::PARAM_INT);
+        $resultado->bindParam(':dataAtual', $dataAtual);
+        $resultado->execute();
+
+        echo "certo";
 
     }catch(PDOException $e){
         echo $e->getMessage();

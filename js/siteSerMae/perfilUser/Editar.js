@@ -2,16 +2,18 @@ $(document).ready(function() {
     $(document).on('click', '#boton', function() {
         var id = $('.id').val();
         var apelido = $('.Apelido').val();
+        var biografia = $('textarea#biogr').val();
         var tipo = $('div.input-group select').val();
         var salvarDados = 0;
 
-        // alert(tipo)
+        // alert(biografia)
 
         if(id !== ""){
             var dados = {
                 id: id,
                 apelido: apelido,
                 tipo: tipo,
+                biografia: biografia,
                 salvarDados: salvarDados,
             }
         }
@@ -41,8 +43,8 @@ $(document).ready(function() {
   
 //   };
 
-// function adicionarArroba(input) {
-//     if (input.value.charAt(0) !== '@') {
-//       input.value = '@' + input.value;
-//     }
-//   }
+function adicionarArroba(input) {
+    if (input.value.charAt(0) !== '@') {
+      input.value = '@' + input.value;
+    }
+  }

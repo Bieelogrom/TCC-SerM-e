@@ -169,6 +169,14 @@ include_once("../../../dao/atualizarSessão.php");
                 <input type="text" placeholder="No que você está pensando?" id="add-post">
                 <input type="button" value="Comentar" class="btn btn-primary btn-submitar" id="<?= $id ?>">
     </form>
+ 
+
+    <div class="comentáriosContainer">
+        <div class="profile-picture">
+            <img style="height: 100%; width:100%" src="../../../img/siteSerMae/Perfis/<?= $_SESSION['fotoPerfil'] ?>" alt="foto_comentador">
+        </div>
+
+    </div>
 </div>
 </div>
 

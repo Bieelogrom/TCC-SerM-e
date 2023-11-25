@@ -82,14 +82,14 @@ $imgPublicacao = $publicacao->getImgPublicacao();
             <input class="input-senha" type="password" id="password" name="password" placeholder="Digite sua senha">
         </div>
 
-        <a href="../../dao/logoff.php"><button class="btn-desativar btn">Avançar</button></a>
+        <button class="btn-desativar btn">Avançar</button>
             <div class="modal">
                 <div class="corpo-modal">
                     <div class="modal-nav">
                         <p class="text-modal">Confirmar ação</p>
                     </div>
                     <div class="button-desativar">
-                    <a href="../../dao/logoff.php"><button class="yes-btn-modal">Confirmar</button></a>
+                    <button class="yes-btn-modal" id="avancar">Confirmar</button></a>
                         <button class="no-btn-modal close-btn">Cancelar</button>
                     </div>
                 </div>
@@ -118,5 +118,7 @@ $imgPublicacao = $publicacao->getImgPublicacao();
 
 
 <script src="./../../../js/siteSerMae/home/site.js"></script>
+<script src="../../../js/jquery-3.7.1.min.js"></script>
+
 </body>
 </html>

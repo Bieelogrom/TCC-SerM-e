@@ -106,5 +106,7 @@ $imgPublicacao = $publicacao->getImgPublicacao();
 
 
 <script src="./../../../js/siteSerMae/home/site.js"></script>
+<script src="../../../js/siteSerMae/configurações/configs.js"></script> 
+<script src="../../../js/jquery-3.7.1.min.js"></script>
 </body>
 </html>

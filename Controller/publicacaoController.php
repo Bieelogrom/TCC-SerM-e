@@ -33,7 +33,29 @@ if (isset($_POST['admin_ação'])) {
             $publicacaodao->createPublicacao($publicacao);
         }
     }
-}
+    header("Location: ../Views/siteSerMae/home/home.php");
+}else if(isset($_POST['comentarNoPost'])){
+    $idU = $_POST['idUsuario'];
+    $idP = $_POST['idPublicacao'];
+    $C = $_POST['comentario'];
+    $set = $_POST['comentarNoPost'];
 
-header("Location: ../Views/siteSerMae/home/home.php");
-?>
+
+
+
+    try {
+        $sql = "INSERT INTO tbcomentarios (comentario, idUsuario, idPublicacao) VALUES (:comentario, :idUsuario, :idPublicacao)";
+        $insertion = conexao::getConexao()->prepare($sql);
+        $insertion->bindParam(':comentario', $C, PDO::PARAM_STR);
+        $insertion->bindParam(':idUsuario', $idU, PDO::PARAM_INT);
+        $insertion->bindParam(':idPublicacao', $idP, PDO::PARAM_INT); 
+        $insertion->execute();
+    
+        echo 'certo';
+    
+    } catch (PDOException $e) {
+        echo $e->getMessage();
+    }
+    
+
+}

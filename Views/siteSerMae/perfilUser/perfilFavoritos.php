@@ -190,7 +190,7 @@ $usuariodao = new usuarioDAO();
                                 <i class="fa-solid fa-heart">
                             
                                         <?php
-                                        if ($quantidadeCurtidas == 0) {
+                                        if ($quantidadeCurtidas == '') {
                                             echo '0';
                                         } else {
                                             echo $quantidadeCurtidas;
@@ -208,7 +208,7 @@ $usuariodao = new usuarioDAO();
         }
     }
     else {
-        echo '<p>Este perfil ainda não possui nenhuma publicação.</p>';
+        echo '<p>Este perfil ainda não possui nenhuma publicação salva.</p>';
     }
     
     ?>

@@ -141,15 +141,14 @@ if (isset($_POST['registrar'])) {
     $idUsuario = $_POST['id'];
     $apelido = $_POST['apelido'];
     $tipoPerfil = $_POST['tipo'];
-
-    // $arroba = "@";
-    // $apelido_verificado = strpos($apelido, $arroba);
+    $bio = $_POST['biografia'];
 
     try {
-        $sql = "UPDATE tbusuario SET apelidoUsuario = :apelido, tipoConta = :tipoConta WHERE idUsuario = :idUsuario";
+        $sql = "UPDATE tbusuario SET apelidoUsuario = :apelido, tipoConta = :tipoConta, bioUsuario = :biografia WHERE idUsuario = :idUsuario";
         $att = conexao::getConexao()->prepare($sql);
         $att->bindParam(':apelido', $apelido);
         $att->bindParam(':tipoConta', $tipoPerfil);
+        $att->bindParam(':biografia', $bio);
         $att->bindParam(':idUsuario', $idUsuario);
         $att->execute();
 
@@ -157,4 +156,47 @@ if (isset($_POST['registrar'])) {
     } catch (PDOException $e) {
         echo $e->getMessage();
     }
+}else if(isset($_POST['alterarSenha'])){
+    $id_usuario = $_POST['id_usuario'];
+    $senha_atual = $_POST['senha_atual'];
+    $nova_senha = $_POST['nova_senha'];
+    $nova_senha_confirmada = $_POST['nova_senha_confirmada'];
+
+    try{
+        //verifica senha do banco
+        $verifica_senha_atual = "SELECT senhaUsuario FROM tbusuario WHERE idUsuario = :idUsuario";
+        $faz_busca = conexao::getConexao()->prepare($verifica_senha_atual);
+        $faz_busca->bindParam(':idUsuario', $id_usuario, PDO::PARAM_INT);
+        $faz_busca->execute();
+        $resultado_da_busca = $faz_busca->fetch(PDO::FETCH_ASSOC);
+
+        $senha_antiga_criptografada = $resultado_da_busca['senhaUsuario'];
+
+
+
+        if(password_verify($senha_atual, $senha_antiga_criptografada)){
+           if($nova_senha == $nova_senha_confirmada){
+            $hash_da_senha_nova = password_hash($nova_senha_confirmada, PASSWORD_DEFAULT);
+
+            $atualiza_senha = "UPDATE tbusuario SET senhaUsuario = :novaSenha WHERE idUsuario = :idUsuario";
+            $atualizar = conexao::getConexao()->prepare($atualiza_senha);
+            $atualizar->bindParam(':novaSenha', $hash_da_senha_nova);
+            $atualizar->bindParam(':idUsuario', $id_usuario);
+            $atualizar->execute();
+
+            echo "SENHA ATUALIZADA COM SUCESSO!";
+
+
+           }else{
+            echo "As senhas não coicidem!";
+           }
+        }else{
+            echo "A senha atual não bate!";
+        }
+
+    }catch(PDOException $e){
+        echo $e->getMessage();
+    }
+
+    
 }

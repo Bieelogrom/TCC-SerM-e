@@ -32,6 +32,12 @@ include_once("../../../dao/atualizarSessão.php");
                 </select>
             </div>
 
+            
+            <div class="input-group">
+                <h3>Biografia:</h3>
+                <textarea name="" cols="30" rows="10" class="selec" id="biogr"><?= $_SESSION['biografiaUsuario'] ?></textarea>
+            </div>
+
             <div class="input-group">
                 <h3 id="resultado"></h3>
             </div>
