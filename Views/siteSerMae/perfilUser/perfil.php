@@ -248,9 +248,24 @@ x    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min
 
     <!--Inicio popup aria-->
     <!--final perfil-popUp-->
-    <?php
-    include('../../../components/siteSerMae/perfilPopup.php')
-    ?>
+    <!-- incluir na página de perfil -->
+    <div class="popup profile-popup">
+        <form action="../../../Controller/usuarioController.php" method="post" enctype="multipart/form-data">
+        <div>
+            <div class="popup-box profile-popup-box">
+                <h1></h1>
+                <p></p>
+                <div id="my-profile-picture">
+                    <a href="../../../Views/siteSerMae/perfilUser/perfil.php"><img style="height: 100%; width:100%" src="../../../img/siteSerMae/Perfis/<?= $_SESSION['fotoPerfil'] ?>" alt=""></a>
+                </div>
+                <label for="profile-upload" class="btn btn-primary btn-lg">Escolha uma foto</label>
+                <input type="file" accept="image/*" id="input-file" name="fotoUsuario">
+                <input type="submit" value="Alterar Foto" name="alterarfotos" class="btn btn-primary btn-lg">
+            </div>
+            <span class="close"><i class="fa fa-close"></i></span>
+        </div>
+        </form>
+    </div>
     <!--inicio perfil-popUp-->
 
     <!--inicio adicionar post-->

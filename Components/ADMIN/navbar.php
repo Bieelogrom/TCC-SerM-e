@@ -78,7 +78,7 @@ include_once("../../dao/atualizarSessão.php");
                     <div class="profile_details">
                             <img src="../../img/siteSerMae/Perfis/<?= $_SESSION['fotoPerfil'] ?>" alt="Foto ADM">
                         <div class="name_job">
-                        <div class="name"><?= $_SESSION['nomeUsuario']; ?></div>
+                        <div class="name"><?= $_SESSION['apelido']; ?></div>
                         </div>
                     </div>
                     <a class="log_out" href="../../Dao/logoff.php"><i class="fa-solid fa-right-from-bracket"></i></a>

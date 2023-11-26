@@ -26,9 +26,7 @@ $(document).ready(function () {
     });
 
 
-    $('.btn-desativar btn').click(function () {
-        alert('oi')
-    });
+
 
 
 

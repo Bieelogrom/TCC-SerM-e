@@ -108,6 +108,19 @@ class usuarioDAO
         }
      
     }
+// função para alterar foto
+    public function alterarFoto($foto, $id){
+    try{   $sql = "UPDATE tbusuario SET fotoUsuario = :foto WHERE idUsuario = :id";
+        $atualizar = conexao::getConexao()->prepare($sql);
+        $atualizar->bindParam(':foto', $foto);
+        $atualizar->bindParam(':id', $id);
+        $atualizar->execute();
+    }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+
+
+    }
 
     public function informacoesAdicionais(Usuario $usuario)
     {
@@ -116,13 +129,10 @@ class usuarioDAO
             $id = $_SESSION['ID_conta'];
             $foto = $usuario->getFotoDePerfil();
 
-
             $sql = "UPDATE tbusuario set fotoUsuario = :foto WHERE idUsuario = :id";
             $stmt = conexao::getConexao()->prepare($sql);
             $stmt->bindParam(':foto', $foto);
             $stmt->bindParam(':id', $id);
-
-
 
             if ($stmt->execute()) {
                 echo "FOTO ATUALIZADA COM SUCESSO!";

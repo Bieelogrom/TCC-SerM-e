@@ -101,7 +101,6 @@ if (isset($_POST['registrar'])) {
         echo "ERRO: " . $e->getMessage();
     }
 } else if (isset($_POST['atualizaPerfil'])) {
-    session_start();
 
     $id = $_SESSION['ID_conta'];
 
@@ -110,7 +109,7 @@ if (isset($_POST['registrar'])) {
 
         $diretoriodasfotos = "../img/siteSerMae/Perfis/";
 
-        $nomeDaFoto = uniqid() . "" . $_FILES["fotoUsuario"]["name"];
+        $nomeDaFoto = $_FILES["fotoUsuario"]["name"];
 
         if (move_uploaded_file($_FILES["fotoUsuario"]["tmp_name"], $diretoriodasfotos . $nomeDaFoto)) {
 
@@ -199,4 +198,26 @@ if (isset($_POST['registrar'])) {
     }
 
     
+}else if(isset($_POST['alterarfotos'])){
+    // função para alterar foto;
+    session_start();
+
+    $foto = $_POST['fotoUsuario'];
+    $id = $_SESSION['ID_conta'];
+
+    if (isset($_FILES["fotoUsuario"]) && $_FILES["fotoUsuario"]["error"] == 0) {
+
+    $diretoriodasfotos = "../img/siteSerMae/Perfis/";
+
+    $nomeDaFoto = $_FILES["fotoUsuario"]["name"];
+
+        if (move_uploaded_file($_FILES["fotoUsuario"]["tmp_name"], $diretoriodasfotos . $nomeDaFoto)) {
+
+            $caminho_arquivo = $diretoriodasfotos . $nomeDaFoto;
+
+            $usuariodao->alterarFoto($nomeDaFoto, $id);
+
+            header("Location: ../Views/siteSerMae/perfilUser/perfil.php");
+        }
+    }
 }
