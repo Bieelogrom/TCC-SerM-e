@@ -72,7 +72,7 @@ x    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min
 
                                 <!--imagens do perfil inicio-->
                                 <div class="papel-parede-img-perfil">
-                                    <img data-bs-toggle="modal" class="papel-parede-img" src="../../../img/siteSerMae/perfil/capaIMG/fundo.jpg" id="my-profile-picture" alt="">
+                                    <img data-bs-toggle="modal" class="papel-parede-img" src="../../../img/siteSerMae/perfil/capaIMG/<?= $_SESSION['fotoCapa'] ?>" id="my-profile-picture" alt="">
 
                                     <div class="profile-picture" id="my-profile-picture">
                                         <img class="perfil-img" src="../../../img/siteSerMae/Perfis/<?= $_SESSION['fotoPerfil'] ?>" alt="">

@@ -72,23 +72,13 @@ $imgPublicacao = $publicacao->getImgPublicacao();
                 <input class="input-senha" type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirme a nova senha">
 
                 <button class="btn-senha btn salvar" type="button">Trocar Senha</button>
+                
                 <h1 id="S2"></h1>
             </form>
 
 
         </div>
     </main>
-
-    <dialog id="modal">
-        <button onclick="fecharModal()" id="fechar-modal">X</button>
-        <div class="conteudo_modal">
-            <form action="../../Controller/usuarioController.php" method="post">
-                <input type="hidden" id="id_escondido" name="ID">
-                <span id="info_user"></span>
-                
-            </form>
-        </div>
-    </dialog>
 
     <!--Inicio popup aria-->
     <!--final perfil-popUp-->
