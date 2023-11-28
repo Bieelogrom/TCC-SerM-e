@@ -40,11 +40,12 @@ $usuarioDAO = new usuarioDAO();
                             <th>Ação</th>
                         </tr>
                     </thead>
+                    <?php foreach($usuarioDAO->verificarDenuncias() as $denuncias) : ?>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>Joao</td>
-                            <td>Guilherme</td>
+                            <td><?= $denuncias->getIdUsuario() ?></td>
+                            <td><?= $denuncias->getNomeUsuario() ?></td>
+                            <td><?= $denuncias->getNomeUsuario() ?></td>
                             <td>xx/xx/xxxx</td>
                             <td class="iconsTable">
                             <i class='bx bxs-check-circle'></i>
@@ -52,6 +53,7 @@ $usuarioDAO = new usuarioDAO();
                             </td>
                         </tr>
                     </tbody>
+                    <?php endforeach ?>
                 </table>
             </div><!-- Fim Tabela Denuncias -->
         </div><!-- Fim Conteudo Adm-->

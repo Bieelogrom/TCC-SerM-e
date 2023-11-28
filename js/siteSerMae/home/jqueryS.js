@@ -5,13 +5,15 @@ $(document).ready(function() {
         var idPublicacao = $(this).attr("id");
         var idUsuario = $('#id_do_usuario').val();
         var itemSalvo = $(this).hasClass('salvo');
+        var salvar_postagem = "s"
         // console.log("ID do usuario = "+ idUsuario)
         // console.log("ID da publicação = "+ idPublicacao)
         if (idPublicacao !== '' && idUsuario !== '') {
             var dados = {
                 idPublicacao: idPublicacao,
                 idUsuario: idUsuario,
-                acao: itemSalvo ? 'remover' : 'salvar'
+                acao: itemSalvo ? 'remover' : 'salvar',
+                salvar_postagem: salvar_postagem
             };
         };
         $.post("./SALVAR.php", dados, function(retorna) {
@@ -30,33 +32,59 @@ $(document).ready(function() {
         })
     })
 
-    $(document).on('click', '.fa-heart', function() {
+    $('.fa-heart').on('click', function() {
         var idPublicacao = $(this).attr("id");
         var curtida = 0;
         var idUsuario = $('#id_do_usuario').val();
+        var itemCurtido = $(this).hasClass('salvo');
         var acao = "1"
 
-        // alert(curtida + idPublicacao + idUsuario)
+        // alert(idPublicacao + idUsuario)
         if (curtida !== '' && idPublicacao !== '' && idUsuario !== '') {
             var infos = {
                 idPublicacao: idPublicacao,
                 idUsuario: idUsuario,
                 curtida: curtida,
-                acao: acao
+                acao: acao,
+                opcaos: itemCurtido ? 'remover' : 'salvar',
             }
         };
+        
         $.post("./SALVAR.php", infos, function(retorno) {
-            $('.fa-heart').html(retorno)
+            if (itemCurtido) {
+                $('.fa-heart').removeClass('salvo');
+            } else {
+                $('.fa-heart').addClass('salvo');
+            }
+            $('#contamento').html(retorno)
         })
     })
 
-    $('.learn-more').on('click', function () {
-        const denuncia = $(this).attr('id');
-        const idPublicacao = $(this).data('id'); // Use data() to retrieve data-id attribute value
-        const idUsuario = $('#id_do_usuario').val(); // Target the input element directly
-      
-        console.log(denuncia, idPublicacao, idUsuario);
-      });
+    $('.fa-ellipsis').on('click', function () {
+        var idPublicacao = $(this).attr("id");
+        var idUsuario = $('#id_do_usuario').val();
+    
+        // Verifica se idPublicacao, idUsuario e outros valores necessários estão presentes
+        if (idPublicacao !== "" && idUsuario !== "") {
+            $('.learn-more').on('click', function () {
+                var denuncia = $(this).attr('id');
+                var denunciar = "denunc";
+    
+                var botafogo = {
+                    idPublicacao: idPublicacao,
+                    idUsuario: idUsuario,
+                    denuncia: denuncia,
+                    denunciar: denunciar
+                };
+    
+                $.post("../../../Controller/publicacaoController.php", botafogo, function (lorota) {
+                    // $('#S2').html(lorota);
+                    location.reload();
+                });
+            });
+        }
+    });
+    
       
 
     $('.fa-comment-dots').on('click', function (){

@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif ;
+}
+
+:root{
+    --roxa: #a683ff;
+    --verde: #cae4ce;
+    --azul:  #d2ecf2;
+    --rosa:  #ffe3dd;
+    --branco: #fff;
+    --preto: #000;
+}
+
+.login{
+    background: linear-gradient(to right, var(--roxa), var(--branco), var(--azul));
+    background-size: 500% 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    animation-name: degrade;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes degrade{
+    0%{
+        background-position-x: 0%;
+    }
+
+    100%{
+        background-position-x: 100%;
+    }
+}
+
+.mainLogin{
+    background-color: var(--branco);
+    display: flex;
+    width: 60%;
+    height: 60vh;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .212);
+}
+
+.mainLogin .left{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.mainLogin .left img{
+    width: 90%;
+}
+
+.mainLogin .right{
+    width: 50%;
+    padding: 20px 20px 0 10px;
+}
+
+.mainLogin .right h2{
+    margin-left: 9%;
+}
+
+.mainLogin .right h2::after{
+    content: "";
+    display: block;
+    width: 4rem;
+    height: 0.3rem;
+    background-color: var(--roxa);
+    margin: 0 auto;
+    position: absolute;
+    border-radius: 10px;
+}
+
+.mainLogin .right form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 85%;
+    padding: 20px;
+}
+
+.mainLogin .right form .email{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-bottom: 30px;
+}
+
+.mainLogin .right form .email label{
+    margin-bottom: 5px;
+}
+
+.mainLogin .right form .email input{
+    margin: 0.6rem 0;
+    padding: 0.8rem 1.2rem;
+    padding-left: 60px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 2px 2px 6px #0000001c;
+    font-size: large;
+}
+
+.mainLogin .right form .email input:hover{
+    background-color: #eeeeee65;
+}
+
+.mainLogin .right form .email input:focus-visible{
+    outline: 1px solid #6c63ff;
+}
+
+.mainLogin .right form .email .icon{
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 60px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+}
+
+/* Input Senha */
+.mainLogin .right form .senha{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-bottom: 50px;
+}
+
+.mainLogin .right form .senha label{
+    margin-bottom: 5px;
+}
+
+.mainLogin .right form .senha input{
+    margin: 0.6rem 0;
+    padding: 0.8rem 1.2rem;
+    padding-left: 60px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 2px 2px 6px #0000001c;
+    font-size: large;
+}
+
+.mainLogin .right form .senha input:hover{
+    background-color: #eeeeee65;
+}
+
+.mainLogin .right form .senha input:focus-visible{
+    outline: 1px solid #6c63ff;
+}
+
+.mainLogin .right form .senha .icon{
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 60px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+}
+
+.mainLogin .right form .BtnLogin{
+    background-color: var(--roxa);
+    width: 90%;
+    height: 5vh;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all .4s ease;
+}
+
+.mainLogin .right form .BtnLogin:hover{
+    background-color: #8e66f5;
+}

@@ -12,38 +12,18 @@ if(isset($_POST["user_id"])){
 
 
     //incluir estilo css na página onde fica o modal
-    $resultado .= '<div class="tudo">';
-    
-    $resultado .= '<div class="idUsuaria">ID da Usuaria: '.$row_user['idUsuario'].'</div>';
-
-    $resultado .= '<div class="nomeUsuaria">'.$row_user['nomeUsuario'].'</div>';
-
-    $resultado .= '<div class="emailUsuaria">' .$row_user['emailUsuario'].'</div>';
-
-
-    $resultado .= '<div class="sttsEtipos">';
-
-        $resultado .= '<div class="statusUsuaria">Conta: Ativo </div>';
-
-        $resultado .= '<div class="tipoUsuaria">Mae Convencional </div>';
-
-    $resultado .= '</div>';// Fim Class Status e Tipos
+    $resultado .= '<div class="tudo" style="background-color: #f2f2f2; padding: 10px; border: 1px solid #ccc;">';
+$resultado .= '<div class="idUsuaria" style="font-weight: bold;">ID da Usuaria: '.$row_user['idUsuario'].'</div>';
+$resultado .= '<div class="nomeUsuaria" style="color: #333;">'.$row_user['nomeUsuario'].'</div>';
+$resultado .= '<div class="emailUsuaria" style="color: #555;">'  .$row_user['emailUsuario'].'</div>';
+$resultado .= '<div class="sttsEtipos">';
+$resultado .= '<div class="statusUsuaria" style="font-style: italic;">Conta: Ativo </div>';
+$resultado .= '<div class="tipoUsuaria" style="text-transform: uppercase;">Mae Convencional </div>';
+$resultado .=   '</div>'; // Fim Class Status e Tipos
 
 
-    $resultado .= '<div class="dropdown"> 
-        <select id="situacao" name="opção">
-            <option value="2">Suspenso</option>
-            <option value="1">Ativo</option>
-            <option value="3">Tornar Adm</option>
-        </select>
-        </div>';
+$resultado .=   '</div>';
+echo $resultado;
 
-    $resultado .= '<div class="btnSalvar">
-                      <button> Salvar </button> 
-                   </div>';
-
-    $resultado .= '</div>';
-
-    echo $resultado;
 
 }

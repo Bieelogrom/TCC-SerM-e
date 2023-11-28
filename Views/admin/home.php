@@ -14,6 +14,7 @@ $usuarioDAO = new usuarioDAO();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../../img/siteSerMae/bemvinda/serMãe.png">
+    <link class="img-head" rel="icon" href="../../img/siteSerMae/bemvinda/serMãe.png">
     <title>Adm - Dashboard</title>
     <link rel="stylesheet" href="../../css/ADMIN/style.css">
 
@@ -22,7 +23,7 @@ $usuarioDAO = new usuarioDAO();
     <link rel="stylesheet" href="../../components/ADMIN/navbar/navSuperior.css">
     <!-- CSS Navbar -->
     <link rel="stylesheet" href="../../components/ADMIN/style.css">
-  
+
     <!-- Imports -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- BoxIcons CDN links -->
@@ -154,7 +155,7 @@ $usuarioDAO = new usuarioDAO();
                                     ?></td>
                                 <td>
                                     <button type="button" id="<?= $usuario->getIdUsuario() ?>" class="view_data" onclick="PegarID(<?= $usuario->getIdUsuario(); ?>)">
-                                        Open Modal
+                                        Opções
                                     </button>
                                 </td>
                             </tr>
@@ -171,7 +172,15 @@ $usuarioDAO = new usuarioDAO();
             <form action="../../Controller/usuarioController.php" method="post">
                 <input type="hidden" id="id_escondido" name="ID">
                 <span id="info_user"></span>
-                
+
+                <select id="situacao" name="opção" class="custom-select">
+                    <option value="2">Suspender</option>
+                    <option value="1">Reativar</option>
+                    <option value="3">Promover</option>
+                </select>
+                <div class="btnSalvar">
+                    <button class="btn btn-primary" style="background-color: #007bff; color: #fff; border: none;">Salvar</button>
+                </div>
             </form>
         </div>
     </dialog>

@@ -1,7 +1,6 @@
 /*window scrol*/
 window.addEventListener('scroll',()=>{
-    document.querySelector('.profile-popup').style.display='none'
-    document.querySelector('.add-post-popup').style.display='none'
+        document.querySelector('.add-post-popup').style.display='none'
     document.querySelector('.notification-box').style.display='none'
 })
 

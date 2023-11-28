@@ -60,20 +60,21 @@ include_once("../../../dao/atualizarSessão.php");
                     <div class="info">
                         <h3><?= $nomeUsuario ?></h3>
                         <div class="time text-coment">
-                            <small> Brasil, <span><?php echo $tempoFormatado; ?></span></small>
+                            <small id="sw"> Brasil, <span><?php echo $tempoFormatado; ?></span></small>
                         </div>
                     </div>
                 </div>
                 <!--menu denuncia inicio-->
                 <span class="edit">
-                    <i class="fas fa-ellipsis" data-modal-target="modal1" data-id="<?= $publicacao->getIdPublicacao(); ?>"></i>
+                    <i class="fas fa-ellipsis" data-modal-target="modal1" id="<?= $id  ?>"></i>
                     <div id="modal1" class="modal">
                         <div class="modal-content">
-                            <p class="denunciar" id="openModalButton1">Denunciar</p>
+                            <p class="denunciar" id="openModalButton1" id="denuncia_botton">Denunciar</p>
                             <div id="myModal1" class="modal-desc">
                                 <div class="modal-content-desc">
                                     <span class="close-desc" id="closeModalButton1"><i class="fa-solid fa-circle-xmark"></i></span>
                                     <h2>Por que você está denunciando essa publicação?</h2>
+                                    <div id="S2"></div>
                                     <div class="opcoes">
 
                                         <button class="learn-more" type="button" id="Informação falsa" value="<?= $id ?>" data-id="<?= $publicacao->getIdPublicacao(); ?>">
@@ -126,7 +127,7 @@ include_once("../../../dao/atualizarSessão.php");
             <div class="action-button">
                 <div class="interaction-button">
                     <span><i class="fa fa-heart" id="<?= $id ?>"></i></span>
-                    <span><?= "<i style='font-size: 12px' class='fa'>" . $quantidadeCurtidas . "</i>"; ?></span>
+                    <span><?= "<i style='font-size: 18px' class='fa' id='contamento'>" . $quantidadeCurtidas . "</i>"; ?></span>
                     <span><i id="contagem"></i></span>
                     <span><i class="fa fa-comment-dots"  id="<?= $id ?>"></i></span>
                 </div>

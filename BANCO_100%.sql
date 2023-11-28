@@ -72,7 +72,7 @@ CREATE TABLE `tbcurtidas` (
 
 CREATE TABLE `tbdenuncias` (
   `idDenuncia` int(11) NOT NULL,
-  `tipoDenuncia` varchar(20) NOT NULL,
+  `tipoDenuncia` varchar(30) NOT NULL,
   `idUsuario` int(11) NOT NULL,
   `idPublicacao` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -180,8 +180,8 @@ CREATE TABLE `tbusuario` (
   `senhaUsuario` varchar(100) NOT NULL,
   `bioUsuario` varchar(125) NOT NULL DEFAULT 'Olá, sou novo no SerMãe!',
   `nascUsuario` date NOT NULL,
-  `fotoUsuario` text NOT NULL DEFAULT 'fotoPadrao.png',
-  `capaUsuario` text NOT NULL DEFAULT 'capaPadrao.png',
+  `fotoUsuario` text NOT NULL,
+  `capaUsuario` text NOT NULL DEFAULT 'capaPadrao.jpg',
   `statusConta` int(11) NOT NULL DEFAULT 1,
   `nivelConta` int(11) NOT NULL DEFAULT 1,
   `tipoConta` int(11) NOT NULL DEFAULT 5

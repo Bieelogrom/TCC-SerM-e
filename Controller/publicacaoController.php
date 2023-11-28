@@ -58,4 +58,24 @@ if (isset($_POST['admin_ação'])) {
     }
     
 
+}else if(isset($_POST['denunciar'])){
+    $idPublicacao = $_POST['idPublicacao'];
+    $idUsuario =  $_POST['idUsuario'];
+    $denuncia =  $_POST['denuncia'];
+
+    // echo $idPublicacao . $idUsuario . $denuncia;
+
+    try{
+        $sql = "INSERT INTO tbdenuncias (tipoDenuncia, idUsuario, idPublicacao) VALUES (:denuncia, :idUsuario, :idPublicacao)";
+        $enviar = conexao::getConexao()->prepare($sql);
+        $enviar->bindParam(':denuncia', $denuncia);
+        $enviar->bindParam(':idUsuario', $idUsuario);
+        $enviar->bindParam(':idPublicacao', $idPublicacao);
+        $enviar->execute();
+
+        echo "CERTO";
+
+    }catch(PDOException $e){
+        echo $e->getMessage();
+    }
 }

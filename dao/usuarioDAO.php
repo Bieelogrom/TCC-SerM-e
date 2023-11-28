@@ -225,4 +225,22 @@ class usuarioDAO
             return null;
         }
     }
+
+    public function verificarDenuncias(){
+        try {
+            $sql = "SELECT * FROM tbdenuncias
+            INNER JOIN tbusuario ON tbdenuncias.idusuario = tbusuario.idusuario
+            ";
+            $query = conexao::getConexao()->query($sql);
+            $lista = $query->fetchAll(PDO::FETCH_ASSOC);
+            $f_lista = array();
+            foreach ($lista as $I) {
+                $f_lista[] = $this->listaUsuarios($I);
+            }
+
+            return $f_lista;
+        } catch (PDOException $e) {
+            echo "Erro na busca: " . $e->getMessage();
+        }
+    }
 }

@@ -18,18 +18,13 @@ include_once("../../dao/atualizarSessão.php");
 
             <div class="logo_content">
                 <div class="logo">
-                    <img class="img-logo" src="../../img/siteSerMae/boasVindas/serMãe.png" alt="">
-                    <div class="logo_name">serMãe</div>
+                    
                 </div>
-                <i class='bx bx-menu' id="btn" ></i>
+                <img class="img-logo" src="../../img/siteSerMae/boasVindas/serMãe.png" alt="">
             </div>
 
 
             <ul class="nav_list">
-                <li>
-                         <i class='bx bx-search' ></i>
-                        <input type="text" placeholder="Search..."> 
-                </li>
 
                 <li>
                     <a href="../../Views/ADMIN/home.php">
@@ -55,13 +50,13 @@ include_once("../../dao/atualizarSessão.php");
                     <span class="tooltip">Denuncias</span>
                 </li>
 
-                <li>
+                <!--<li>
                     <a href="../../Views/ADMIN/comunidade.php">
                         <i class="fa-solid fa-user-group"></i>
                         <span class="links_name">Comunidades</span>
                     </a>
                     <span class="tooltip">Comunidades</span>
-                </li>
+                </li>-->
 
                 <li>
                     <a href="../../Views/admin/configuracoes.php">
@@ -78,7 +73,7 @@ include_once("../../dao/atualizarSessão.php");
                     <div class="profile_details">
                             <img src="../../img/siteSerMae/Perfis/<?= $_SESSION['fotoPerfil'] ?>" alt="Foto ADM">
                         <div class="name_job">
-                        <div class="name"><?= $_SESSION['apelido']; ?></div>
+                        <div class="name"><?= $_SESSION['nomeUsuario']; ?></div>
                         </div>
                     </div>
                     <a class="log_out" href="../../Dao/logoff.php"><i class="fa-solid fa-right-from-bracket"></i></a>
