@@ -35,9 +35,9 @@ $usuarioDAO = new usuarioDAO();
                         <tr>
                             <th>ID</th>
                             <th>Denunciador</th>
-                            <th>Denunciado</th>
+                            <th>Post denunciado</th>
+                            <th>Tipo de denuncia</th>
                             <th>Data</th>
-                            <th>Ação</th>
                         </tr>
                     </thead>
                     <?php foreach($usuarioDAO->verificarDenuncias() as $denuncias) : ?>
@@ -45,8 +45,9 @@ $usuarioDAO = new usuarioDAO();
                         <tr>
                             <td><?= $denuncias->getIdUsuario() ?></td>
                             <td><?= $denuncias->getNomeUsuario() ?></td>
-                            <td><?= $denuncias->getNomeUsuario() ?></td>
-                            <td>xx/xx/xxxx</td>
+                            <td><a href="../siteSerMae/home/publicacao.php?idPub=<?= $denuncias->getTipoDePerfil() ?>"><?= $denuncias->getSenhaUsuario() ?></a></td>
+                            <td><?= $denuncias->getStatusConta() ?></td>
+                            <td><?= $denuncias->getDataNascimentoUsuario() ?></td>
                             <td class="iconsTable">
                             <i class='bx bxs-check-circle'></i>
                             <i class='bx bx-trash'></i>

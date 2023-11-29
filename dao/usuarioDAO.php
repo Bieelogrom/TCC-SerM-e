@@ -228,22 +228,40 @@ class usuarioDAO
 
     public function verificarDenuncias(){
         try {
-            $sql = "SELECT * FROM tbusuario u
-            INNER JOIN tbdenuncias ON u.idUsuario = tbdenuncias.idUsuario
-            INNER JOIN tbpublicacao ON u.idUsuario = tbpublicacao.idUsuario
-            WHERE u.idUsuario = (
-                SELECT idUsuario FROM tbpublicacao);
+            $sql = "SELECT *
+            FROM tbdenuncias d
+            INNER JOIN tbusuario u ON u.idUsuario = d.idUsuario
+            INNER JOIN tbpublicacao p ON p.idPublicacao = d.idPublicacao
+            
             ";
+            
             $query = conexao::getConexao()->query($sql);
             $lista = $query->fetchAll(PDO::FETCH_ASSOC);
             $f_lista = array();
             foreach ($lista as $I) {
-                $f_lista[] = $this->listaUsuarios($I);
+                $f_lista[] = $this->listaDenuncias($I);
             }
 
             return $f_lista;
         } catch (PDOException $e) {
             echo "Erro na busca: " . $e->getMessage();
         }
+    }
+
+
+    public function listaDenuncias($row)
+    {
+        $usuario = new Usuario();
+        $usuario->setIdUsuario($row['idDenuncia']);
+        $usuario->setNomeUsuario($row['nomeUsuario']);
+        $usuario->setEmailUsuario($row['emailUsuario']);
+        $usuario->setTelefoneUsuario($row['telefoneUsuario']);
+        $usuario->setDataNascimentoUsuario($row['dataDenuncia']);
+        $usuario->setSenhaUsuario($row['legendaPublicacao']);
+        $usuario->setTipoDePerfil($row['idPublicacao']);
+        $usuario->setStatusConta($row['tipoDenuncia']);
+        $usuario->setFotoDePerfil($row['fotoUsuario']);
+
+        return $usuario;
     }
 }
