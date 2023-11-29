@@ -13,6 +13,7 @@ if (isset($_POST['admin_ação'])) {
     $id = $_SESSION['ID_conta'];
     $dataAtual = date("Y-m-d H:i:s");
     $legenda = $_POST['legenda'];
+    
 
     if (isset($_FILES["imagemPost"]) && $_FILES["imagemPost"]["error"] == 0) {
         $diretoriodasfotos = "../img/siteSerMae/publicacao/";
@@ -62,15 +63,17 @@ if (isset($_POST['admin_ação'])) {
     $idPublicacao = $_POST['idPublicacao'];
     $idUsuario =  $_POST['idUsuario'];
     $denuncia =  $_POST['denuncia'];
+    $dataAtual = date("Y-m-d H:i:s");
 
     // echo $idPublicacao . $idUsuario . $denuncia;
 
     try{
-        $sql = "INSERT INTO tbdenuncias (tipoDenuncia, idUsuario, idPublicacao) VALUES (:denuncia, :idUsuario, :idPublicacao)";
+        $sql = "INSERT INTO tbdenuncias (tipoDenuncia, idUsuario, idPublicacao, dataDenuncia) VALUES (:denuncia, :idUsuario, :idPublicacao, :dataDenuncia)";
         $enviar = conexao::getConexao()->prepare($sql);
         $enviar->bindParam(':denuncia', $denuncia);
         $enviar->bindParam(':idUsuario', $idUsuario);
         $enviar->bindParam(':idPublicacao', $idPublicacao);
+        $enviar->bindParam(':dataDenuncia', $dataAtual);
         $enviar->execute();
 
         echo "CERTO";

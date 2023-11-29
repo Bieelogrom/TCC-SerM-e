@@ -228,8 +228,11 @@ class usuarioDAO
 
     public function verificarDenuncias(){
         try {
-            $sql = "SELECT * FROM tbdenuncias
-            INNER JOIN tbusuario ON tbdenuncias.idusuario = tbusuario.idusuario
+            $sql = "SELECT * FROM tbusuario u
+            INNER JOIN tbdenuncias ON u.idUsuario = tbdenuncias.idUsuario
+            INNER JOIN tbpublicacao ON u.idUsuario = tbpublicacao.idUsuario
+            WHERE u.idUsuario = (
+                SELECT idUsuario FROM tbpublicacao);
             ";
             $query = conexao::getConexao()->query($sql);
             $lista = $query->fetchAll(PDO::FETCH_ASSOC);

@@ -74,7 +74,8 @@ CREATE TABLE `tbdenuncias` (
   `idDenuncia` int(11) NOT NULL,
   `tipoDenuncia` varchar(30) NOT NULL,
   `idUsuario` int(11) NOT NULL,
-  `idPublicacao` int(11) NOT NULL
+  `idPublicacao` int(11) NOT NULL,
+   `dataDenuncia` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
