@@ -43,13 +43,13 @@ $usuarioDAO = new usuarioDAO();
                     <?php foreach($usuarioDAO->verificarDenuncias() as $denuncias) : ?>
                     <tbody>
                         <tr>
-                            <td><?= $denuncias->getIdUsuario() ?></td>
+                            <td class="idDoUser" id="<?= $denuncias->getIdUsuario() ?>"><?= $denuncias->getIdUsuario() ?></td>
                             <td><?= $denuncias->getNomeUsuario() ?></td>
                             <td><a href="../siteSerMae/home/publicacao.php?idPub=<?= $denuncias->getTipoDePerfil() ?>"><?= $denuncias->getSenhaUsuario() ?></a></td>
                             <td><?= $denuncias->getStatusConta() ?></td>
                             <td><?= $denuncias->getDataNascimentoUsuario() ?></td>
                             <td class="iconsTable">
-                            <i class='bx bxs-check-circle'></i>
+                            <button class='bx bxs-check-circle' id="<?= $denuncias->getIdUsuario() ?>"></button>
                             <i class='bx bx-trash'></i>
                             </td>
                         </tr>
@@ -65,7 +65,6 @@ $usuarioDAO = new usuarioDAO();
                 <div id="modalHeaderDenuncia">
                     <h3>ID Denuncia: 
                         <p class="idUser">
-                            1
                         </p>
                     </h3>
                     <button id="fecharModalDenuncia">&times;</button>
@@ -79,10 +78,10 @@ $usuarioDAO = new usuarioDAO();
                                 <img src="../../img/ADMIN/perfil.png" alt="">
                             </div><!-- Fim FotoDenunciador -->
                             <div class="nomeDenunciador">
-                                <p>Joao</p>
+                                <p class="nome_denunciador"></p>
                             </div><!-- Fim NomeDenunciador -->
                             <div class="emailDenunciador">
-                                <p>joao@gmail.com</p>
+                                <p class="email_denunciardor"></p>
                             </div><!-- Fim EmailDenunciador -->
                         </div><!-- Fim Denunciador -->
                         
@@ -157,9 +156,9 @@ $usuarioDAO = new usuarioDAO();
     </section>
 
     
-
+            <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
             <script src="../../Components/ADMIN/menu-lateral.js"></script>
-            <script src="../../Components/ADMIN/modal/modalDenuncia.js"></script>
+            <script src="../../Components/ADMIN/modal/modalDenunciaConfig.js"></script>
             
 </body>
 </html>

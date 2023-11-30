@@ -101,6 +101,7 @@ if (isset($_POST['registrar'])) {
         echo "ERRO: " . $e->getMessage();
     }
 } else if (isset($_POST['atualizaPerfil'])) {
+    session_start();
 
     $id = $_SESSION['ID_conta'];
 

@@ -28,6 +28,24 @@ if(isset($_POST['admin_ação'])){
         exit();
     }
 
+}else if(isset($_POST['denc'])){
+
+    $user_id = $_POST['id_da_publicacao'];
+
+    try{
+        
+    $query_user = "SELECT * FROM tbusuario WHERE idUsuario = :id";
+    $resultado_user = conexao::getConexao()->prepare($query_user);
+    $resultado_user->execute([':id' => $user_id]);
+    $row_user = $resultado_user->fetch(PDO::FETCH_ASSOC);
+
+    header('Content-Type: application/json');
+    echo json_encode($row_user);
+    }
+    catch(PDOException $e){
+        echo $e->getMessage();
+    }
+
 }
 
 

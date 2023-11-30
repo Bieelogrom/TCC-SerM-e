@@ -205,7 +205,10 @@ $imgPublicacao = $publicacao->getImgPublicacao();
 
 
 
-<script src="../../../js/siteSerMae/home/site.js"></script>
+<script src="../../../js/siteSerMae/home/site.js">
+</script>
+
+
 
 <!--link JS swiper story-->
 <script type="module">

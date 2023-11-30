@@ -8,6 +8,8 @@ include_once("../../../dao/atualizarSessão.php");
 <div class="feed">
 
     <input type="hidden" value="<?= $_SESSION['ID_conta'] ?>" id="id_do_usuario">
+    
+  
 
 
     <!--Feed Top-->
@@ -111,7 +113,7 @@ include_once("../../../dao/atualizarSessão.php");
                             <hr class="linha-denuncia">
                             <h2 class="close" data-modal-close="modal1">Cancelar</h2>
                         </div>
-                    </div>
+                     </div>
                 </span>
 
 
